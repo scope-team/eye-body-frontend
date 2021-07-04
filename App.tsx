@@ -1,7 +1,9 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import {StatusBar, View, Text} from 'react-native';
-import tailwind from 'tailwind-rn';
-import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import { StatusBar } from 'react-native';
+import RootStack from 'navigation/RootStack';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { NavigationContainer } from '@react-navigation/native';
 
 type TProps = {};
 
@@ -14,10 +16,10 @@ const client = new ApolloClient({
 const App = ({}: TProps) => {
   return (
     <ApolloProvider client={client}>
-      <StatusBar barStyle="light-content" />
-      <View style={tailwind('h-full')}>
-        <Text>123123123</Text>
-      </View>
+      <NavigationContainer>
+        <StatusBar barStyle="light-content" />
+        <RootStack />
+      </NavigationContainer>
     </ApolloProvider>
   );
 };
