@@ -1,7 +1,10 @@
 import React from 'react';
-import {StatusBar, View, Text} from 'react-native';
-import tailwind from 'tailwind-rn';
+import {NavigationContainer} from '@react-navigation/native';
+import 'react-native-gesture-handler';
+import {StatusBar} from 'react-native';
+// import tailwind from 'tailwind-rn';
 import {ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import StackNavigator from './src/navigation/StackNavigator';
 
 type TProps = {};
 
@@ -15,9 +18,9 @@ const App = ({}: TProps) => {
   return (
     <ApolloProvider client={client}>
       <StatusBar barStyle="light-content" />
-      <View style={tailwind('h-full')}>
-        <Text>123123123</Text>
-      </View>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
     </ApolloProvider>
   );
 };
