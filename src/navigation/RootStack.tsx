@@ -1,35 +1,32 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: StackNavigator
- */
-
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { HomeBottomTab } from 'navigation/HomeBottomTab';
 import WriteStack from '@screen/WriteStack';
 import PopupStack from '@screen/PopupStack';
 import GalleryStack from '@screen/GalleryStack';
 import FAQStack from '@screen/FAQStack';
+import CameraStack from '@screen/CameraStack';
+import SettingStack from '@screen/SettingStack';
 
 type TProps = {};
 
 type TRootStackParamList = {
   HomeStack: undefined;
+  CameraStack: undefined;
+  GalleryStack: undefined;
   WriteStack: undefined;
   PopupStack: undefined;
-  GalleryStack: undefined;
   FAQStack: undefined;
+  SettingStack: undefined;
 };
 
 const RootStack = ({}: TProps) => {
   const Stack = createStackNavigator<TRootStackParamList>();
 
   return (
-    <Stack.Navigator initialRouteName="HomeStack">
+    <Stack.Navigator initialRouteName="CameraStack">
       <Stack.Screen
-        name="HomeStack"
-        component={HomeBottomTab}
+        name="CameraStack"
+        component={CameraStack}
         options={({ navigation }) => ({
           headerShown: false,
         })}
@@ -58,6 +55,13 @@ const RootStack = ({}: TProps) => {
       <Stack.Screen
         name="FAQStack"
         component={FAQStack}
+        options={({ navigation }) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="SettingStack"
+        component={SettingStack}
         options={({ navigation }) => ({
           headerShown: false,
         })}
