@@ -1,9 +1,3 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: FAQStack
- */
-
 import React from 'react';
 import { View, Text } from 'react-native';
 import StackHeader from '@components/Header/StackHeader';
