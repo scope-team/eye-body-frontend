@@ -1,9 +1,3 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: Gallery
- */
-
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import StackHeader from '@components/Header/StackHeader';
