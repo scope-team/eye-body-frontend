@@ -23,8 +23,7 @@ const SettingStack = ({ navigation }: TProps) => {
   return (
     <View>
       <PageHeader goBack={goBack} />
-      {/* /** 지우고 시작 */}
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'column' }}>
         <Text style={{ fontSize: 40 }}>setting</Text>
         <Text style={{ fontSize: 20 }} onPress={() => isCallStackScreen('GalleryStack')}>
           가이드 사진 변경
@@ -38,7 +37,6 @@ const SettingStack = ({ navigation }: TProps) => {
         <Text style={{ fontSize: 20 }}>평가하기</Text>
         <Text style={{ fontSize: 20 }}>만든 사람들</Text>
       </View>
-      {/* /** 여기까지 */}
     </View>
   );
 };

@@ -20,8 +20,7 @@ type TRootStackParamList = {
   FAQStack: undefined;
 };
 
-const RootStack = ({}: TProps) => {
-  const [toggle, setToggle] = useState(false);
+export default function RootStack({}: TProps) {
   const Stack = createStackNavigator<TRootStackParamList>();
 
   return (
@@ -79,6 +78,4 @@ const RootStack = ({}: TProps) => {
       />
     </Stack.Navigator>
   );
-};
-
-export default RootStack;
+}
