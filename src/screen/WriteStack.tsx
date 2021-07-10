@@ -1,7 +1,7 @@
 /**
  * Author: Ryan
  * Date: 2021-07-04
- * title: Write
+ * title: WriteStack
  */
 
 import React from 'react';
@@ -12,7 +12,7 @@ type TProps = {
   navigation: any;
 };
 
-const Write = ({ navigation }: TProps) => {
+export default function WriteStack({ navigation }: TProps) {
   const goBack = navigation.goBack;
   return (
     <View>
@@ -20,6 +20,4 @@ const Write = ({ navigation }: TProps) => {
       <Text>{'testString'}</Text>
     </View>
   );
-};
-
-export default Write;
+}
