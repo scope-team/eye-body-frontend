@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
+import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
@@ -14,10 +15,14 @@ type TProps = {
 type TRootStack = 'GalleryPage' | 'SettingPage';
 
 export default function BottomTab({ navigation }: TProps) {
+  const { setCurrentStack } = useStackContext();
+
   const isCallStackNavigator = (stack: TRootStack) => {
     if (stack === 'GalleryPage') {
+      setCurrentStack('GalleryPage');
       navigation.navigate('GalleryPage');
     } else if (stack === 'SettingPage') {
+      setCurrentStack('SettingPage');
       navigation.navigate('SettingPage');
     }
   };

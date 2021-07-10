@@ -11,7 +11,7 @@ const PageHeader = ({ goBack }: TProps) => {
       <TouchableOpacity
         style={{
           position: 'absolute',
-          bottom: 11,
+          bottom: 5,
           right: 11,
           width: 46,
           height: 46,

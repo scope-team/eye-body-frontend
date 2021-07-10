@@ -4,7 +4,6 @@ import { StatusBar } from 'react-native';
 import RootStack from '@navigation/RootStack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { NavigationContainer } from '@react-navigation/native';
-import { stackContext, TCurrentStack } from '@/lib/context/useStackContext';
 
 type TProps = {};
 
@@ -15,15 +14,12 @@ const client = new ApolloClient({
 });
 
 const App = ({}: TProps) => {
-  const [currentStack, setCurrentStack] = useState<TCurrentStack>('CameraStack');
   return (
     <ApolloProvider client={client}>
       <StatusBar barStyle="light-content" />
-      <stackContext.Provider value={{ currentStack, setCurrentStack }}>
-        <NavigationContainer>
-          <RootStack />
-        </NavigationContainer>
-      </stackContext.Provider>
+      <NavigationContainer>
+        <RootStack />
+      </NavigationContainer>
     </ApolloProvider>
   );
 };

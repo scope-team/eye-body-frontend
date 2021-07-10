@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import StackHeader from '@components/Header/StackHeader';
+import StackHeader from '@/components/Header/StackHeader';
 
 type TProps = {
   navigation: any;
