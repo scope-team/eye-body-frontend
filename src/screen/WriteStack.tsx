@@ -17,7 +17,7 @@ const Write = ({ navigation }: TProps) => {
   return (
     <View>
       <StackHeader goBack={goBack} />
-      <Text>글을 쓰라</Text>
+      <Text>{'testString'}</Text>
     </View>
   );
 };

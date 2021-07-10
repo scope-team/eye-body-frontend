@@ -1,7 +1,7 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 import { StatusBar } from 'react-native';
-import RootStack from 'navigation/RootStack';
+import RootStack from '@navigation/RootStack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -16,8 +16,8 @@ const client = new ApolloClient({
 const App = ({}: TProps) => {
   return (
     <ApolloProvider client={client}>
+      <StatusBar barStyle="light-content" />
       <NavigationContainer>
-        <StatusBar barStyle="light-content" />
         <RootStack />
       </NavigationContainer>
     </ApolloProvider>
