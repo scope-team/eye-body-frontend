@@ -6,8 +6,8 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import StackHeader from '@components/Header/StackHeader';
-import Guides from '@components/Popup/Guides';
+import StackHeader from '@/components/Header/StackHeader';
+import Guides from '@/components/Popup/Guides';
 
 type TProps = {
   navigation: any;

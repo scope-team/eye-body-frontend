@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text } from 'react-native';
-import PageHeader from '@components/Header/PageHeader';
+import PageHeader from '@/components/Header/PageHeader';
 
 type TProps = {
   navigation: any;
