@@ -1,17 +1,20 @@
 import React, { Dispatch, createContext, useContext } from 'react';
 
 export type TCurrentStack =
-  | 'CameraStack'
-  | 'GalleryPage'
-  | 'GalleryStack'
-  | 'PopupStack'
-  | 'SettingPage';
+  | 'Camera'
+  | 'Gallery'
+  | 'Select'
+  | 'Write'
+  | 'Compare'
+  | 'Befor & After'
+  | 'Animation'
+  | 'Popup'
+  | 'Setting'
+  | 'FAQ';
 
 type TStackContext = {
   currentStack: TCurrentStack;
   setCurrentStack: Dispatch<React.SetStateAction<TCurrentStack>>;
-  currentMode?: string;
-  setCurrentMode?: Dispatch<React.SetStateAction<string>>;
 };
 
 export const stackContext = createContext<TStackContext | null>(null);

@@ -3,13 +3,14 @@ import { View } from 'react-native';
 import Gallery from '@/components/Gallery';
 
 type TProps = {
+  route: any;
   navigation: any;
 };
 
-export default function GalleryPage({ navigation }: TProps) {
+export default function GalleryPage({ route, navigation }: TProps) {
   return (
     <View>
-      <Gallery navigation={navigation} />
+      <Gallery route={route} navigation={navigation} />
     </View>
   );
 }

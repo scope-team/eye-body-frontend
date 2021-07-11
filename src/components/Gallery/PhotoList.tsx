@@ -1,23 +1,21 @@
-/**
- * Author: Ryan
- * Date: 2021-07-11
- * title: PhotoList
- */
-
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
+import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
 };
 
 export default function PhotoList({ navigation }: TProps) {
+  const { setCurrentStack } = useStackContext();
+
   const isCallStackNavigator = () => {
+    setCurrentStack('Write');
     navigation.navigate('WriteStack');
   };
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', height: '100%', backgroundColor: '#202020' }}>
       <TouchableOpacity
         style={{
           width: 100,
