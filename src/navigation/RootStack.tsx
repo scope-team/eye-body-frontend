@@ -22,7 +22,7 @@ type TRootStackParamList = {
 };
 
 export default function RootStack({}: TProps) {
-  const [currentStack, setCurrentStack] = useState<TCurrentStack>('CameraStack');
+  const [currentStack, setCurrentStack] = useState<TCurrentStack>('Camera');
 
   const Stack = createStackNavigator<TRootStackParamList>();
 
@@ -32,14 +32,14 @@ export default function RootStack({}: TProps) {
         <Stack.Screen
           name="CameraStack"
           component={CameraStack}
-          options={({ navigation }) => ({
+          options={({ route, navigation }) => ({
             headerShown: false,
           })}
         />
         <Stack.Screen
           name="GalleryPage"
           component={GalleryPage}
-          options={({ navigation }) => ({
+          options={({ route, navigation }) => ({
             headerShown: false,
             cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
           })}
@@ -62,14 +62,14 @@ export default function RootStack({}: TProps) {
         <Stack.Screen
           name="WriteStack"
           component={WriteStack}
-          options={({ navigation }) => ({
+          options={({ route, navigation }) => ({
             headerShown: false,
           })}
         />
         <Stack.Screen
           name="PopupStack"
           component={PopupStack}
-          options={({ navigation }) => ({
+          options={({ route, navigation }) => ({
             headerShown: false,
           })}
         />

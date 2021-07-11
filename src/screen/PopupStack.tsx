@@ -1,26 +1,16 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: Popup
- */
-
 import React from 'react';
 import { View } from 'react-native';
-import StackHeader from '@/components/Header/StackHeader';
-import Guides from '@/components/Popup/Guides';
+import Popup from '@/components/Popup';
 
 type TProps = {
+  route: any;
   navigation: any;
 };
 
-const Popup = ({ navigation }: TProps) => {
-  const goBack = navigation.goBack;
+export default function PopupStack({ route, navigation }: TProps) {
   return (
     <View>
-      <StackHeader goBack={goBack} />
-      <Guides />
+      <Popup route={route} navigation={navigation} />
     </View>
   );
-};
-
-export default Popup;
+}

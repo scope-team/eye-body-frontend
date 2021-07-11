@@ -1,34 +1,21 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: Gallery
- */
-
 import React from 'react';
 import { View } from 'react-native';
-import StackHeader from '@/components/Header/StackHeader';
-import PageHeader from '@/components/Header/PageHeader';
-import PhotoList from '@/components/Gallery/PhotoList';
+import Header from '@/components/Header';
 import Title from '@/components/Title';
-import useStackContext from '@/lib/context/useStackContext';
+import PhotoList from '@/components/Gallery/PhotoList';
 
 type TProps = {
+  route: any;
   navigation: any;
 };
 
-export default function GalleryIndex({ navigation }: TProps) {
-  const { currentStack } = useStackContext();
+export default function GalleryIndex({ route, navigation }: TProps) {
   const goBack = navigation.goBack;
 
   return (
     <View>
-      {currentStack === 'GalleryPage' ? (
-        <PageHeader goBack={goBack} />
-      ) : (
-        <StackHeader goBack={goBack} />
-      )}
-
-      <Title />
+      <Header route={route} navigation={navigation} goBack={goBack} />
+      <Title navigation={navigation} />
       <PhotoList navigation={navigation} />
     </View>
   );

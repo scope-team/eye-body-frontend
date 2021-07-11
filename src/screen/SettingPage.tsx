@@ -1,44 +1,16 @@
-import React, { useCallback } from 'react';
-import { View, Text } from 'react-native';
-import PageHeader from '@/components/Header/PageHeader';
+import React from 'react';
+import { View } from 'react-native';
+import Setting from '@/components/Setting';
 
 type TProps = {
+  route: any;
   navigation: any;
 };
 
-type TStack = 'GalleryStack' | 'FAQStack';
-
-const SettingStack = ({ navigation }: TProps) => {
-  const goBack = navigation.goBack;
-
-  const isCallStackScreen = useCallback((screen: TStack) => {
-    if (screen === 'GalleryStack') {
-      navigation.navigate('GalleryStack');
-    }
-    if (screen === 'FAQStack') {
-      navigation.navigate('FAQStack');
-    }
-  }, []);
-
+export default function SettingPage({ route, navigation }: TProps) {
   return (
     <View>
-      <PageHeader goBack={goBack} />
-      <View style={{ flexDirection: 'column' }}>
-        <Text style={{ fontSize: 40 }}>setting</Text>
-        <Text style={{ fontSize: 20 }} onPress={() => isCallStackScreen('GalleryStack')}>
-          가이드 사진 변경
-        </Text>
-        <Text style={{ fontSize: 20 }}>가이드 사진 표시</Text>
-        <Text style={{ fontSize: 20 }}>고해상도</Text>
-        <Text style={{ fontSize: 20 }}>거울모드</Text>
-        <Text style={{ fontSize: 20 }} onPress={() => isCallStackScreen('FAQStack')}>
-          FAQ
-        </Text>
-        <Text style={{ fontSize: 20 }}>평가하기</Text>
-        <Text style={{ fontSize: 20 }}>만든 사람들</Text>
-      </View>
+      <Setting route={route} navigation={navigation} />
     </View>
   );
-};
-
-export default SettingStack;
+}

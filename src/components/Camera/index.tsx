@@ -1,9 +1,3 @@
-/**
- * Author: Ryan
- * Date: 2021-07-11
- * title: index
- */
-
 import React from 'react';
 import { View } from 'react-native';
 import BottomTab from '@components/Camera/BottomTab';

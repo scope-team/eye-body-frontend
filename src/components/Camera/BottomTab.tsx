@@ -1,10 +1,4 @@
-/**
- * Author: Ryan
- * Date: 2021-07-11
- * title: BottomTab
- */
-
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text } from 'react-native';
 import useStackContext from '@/lib/context/useStackContext';
 
@@ -17,15 +11,15 @@ type TRootStack = 'GalleryPage' | 'SettingPage';
 export default function BottomTab({ navigation }: TProps) {
   const { setCurrentStack } = useStackContext();
 
-  const isCallStackNavigator = (stack: TRootStack) => {
+  const handleChangeStack = useCallback((stack: TRootStack) => {
     if (stack === 'GalleryPage') {
-      setCurrentStack('GalleryPage');
+      setCurrentStack('Gallery');
       navigation.navigate('GalleryPage');
     } else if (stack === 'SettingPage') {
-      setCurrentStack('SettingPage');
+      setCurrentStack('Setting');
       navigation.navigate('SettingPage');
     }
-  };
+  }, []);
 
   return (
     <View
@@ -39,11 +33,11 @@ export default function BottomTab({ navigation }: TProps) {
         padding: 30,
         backgroundColor: '#202020',
       }}>
-      <Text style={{ color: 'white' }} onPress={() => isCallStackNavigator('GalleryPage')}>
+      <Text style={{ color: 'white' }} onPress={() => handleChangeStack('GalleryPage')}>
         앨범
       </Text>
       <Text style={{ color: 'white' }}>촬영버튼</Text>
-      <Text style={{ color: 'white' }} onPress={() => isCallStackNavigator('SettingPage')}>
+      <Text style={{ color: 'white' }} onPress={() => handleChangeStack('SettingPage')}>
         세팅
       </Text>
     </View>
