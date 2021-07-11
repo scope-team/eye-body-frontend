@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text } from 'react-native';
 import useStackContext from '@/lib/context/useStackContext';
-import Header from '@/components/Header';
 import Title from '@/components/Title';
 
 type TProps = {
@@ -18,18 +17,15 @@ export default function SettingIndex({ route, navigation }: TProps) {
 
   const isCallStackScreen = useCallback((screen: TStack) => {
     if (screen === 'GalleryStack') {
-      setCurrentStack('Select');
       navigation.navigate('GalleryStack');
     } else if (screen === 'FAQStack') {
-      setCurrentStack('FAQ');
       navigation.navigate('FAQStack');
     }
   }, []);
 
   return (
     <View>
-      <Header route={route} navigation={navigation} />
-      <Title navigation={navigation} />
+      <Title title="Setting" navigation={navigation} />
       <View style={{ flexDirection: 'column' }}>
         <Text style={{ fontSize: 20 }} onPress={() => isCallStackScreen('GalleryStack')}>
           가이드 사진 변경

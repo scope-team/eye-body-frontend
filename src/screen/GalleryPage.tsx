@@ -1,16 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
-import Gallery from '@/components/Gallery';
+import Gallery from '@/components/GalleryPage';
+import PageHeader from '@/components/Header/PageHeader';
 
 type TProps = {
-  route: any;
   navigation: any;
 };
 
-export default function GalleryPage({ route, navigation }: TProps) {
+export default function GalleryPage({ navigation }: TProps) {
   return (
     <View>
-      <Gallery route={route} navigation={navigation} />
+      <PageHeader navigation={navigation} />
+      <Gallery navigation={navigation} />
     </View>
   );
 }

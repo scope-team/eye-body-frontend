@@ -1,8 +1,14 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
-type TProps = {};
+type TProps = {
+  navigation: any;
+};
 
-export default function Writeindex({}: TProps) {
-  return <View></View>;
+export default function Writeindex({ navigation }: TProps) {
+  return (
+    <View>
+      <Text>{'testString'}</Text>
+    </View>
+  );
 }
