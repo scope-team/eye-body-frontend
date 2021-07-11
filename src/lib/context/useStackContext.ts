@@ -1,20 +1,14 @@
 import React, { Dispatch, createContext, useContext } from 'react';
 
-export type TCurrentStack =
-  | 'Camera'
-  | 'Gallery'
-  | 'Select'
-  | 'Write'
-  | 'Compare'
-  | 'Befor & After'
-  | 'Animation'
-  | 'Popup'
-  | 'Setting'
-  | 'FAQ';
+export type TGalleryStack = 'Select' | 'Compare' | 'Befor & After' | 'Animation';
+
+export type TPopupStack = 'EditPhoto' | 'SelectGuide';
 
 type TStackContext = {
-  currentStack: TCurrentStack;
-  setCurrentStack: Dispatch<React.SetStateAction<TCurrentStack>>;
+  GalleryStackType: TGalleryStack;
+  setCurrentStack: Dispatch<React.SetStateAction<TGalleryStack>>;
+  PopupStackType: TPopupStack;
+  setPopupStackType: Dispatch<React.SetStateAction<TPopupStack>>;
 };
 
 export const stackContext = createContext<TStackContext | null>(null);

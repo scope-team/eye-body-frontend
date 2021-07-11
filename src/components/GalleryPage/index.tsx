@@ -8,12 +8,10 @@ type TProps = {
   navigation: any;
 };
 
-export default function GalleryIndex({ navigation }: TProps) {
-  const { GalleryStackType } = useStackContext();
-
+export default function GalleryPageIndex({ navigation }: TProps) {
   return (
     <View>
-      <Title title={GalleryStackType} navigation={navigation} />
+      <Title title="Gallery" navigation={navigation} />
       <PhotoList navigation={navigation} />
     </View>
   );

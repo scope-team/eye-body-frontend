@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import Write from '@/components/Write';
+import StackHeader from '@/components/Header/StackHeader';
 
 type TProps = {
   navigation: any;
@@ -8,7 +10,8 @@ type TProps = {
 export default function WriteStack({ navigation }: TProps) {
   return (
     <View>
-      <Text>{'testString'}</Text>
+      <StackHeader navigation={navigation} />
+      <Write navigation={navigation} />
     </View>
   );
 }
