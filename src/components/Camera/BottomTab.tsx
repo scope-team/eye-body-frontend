@@ -9,14 +9,10 @@ type TProps = {
 type TRootStack = 'GalleryPage' | 'SettingPage';
 
 export default function BottomTab({ navigation }: TProps) {
-  const { setCurrentStack } = useStackContext();
-
   const handleChangeStack = useCallback((stack: TRootStack) => {
     if (stack === 'GalleryPage') {
-      setCurrentStack('Gallery');
       navigation.navigate('GalleryPage');
     } else if (stack === 'SettingPage') {
-      setCurrentStack('Setting');
       navigation.navigate('SettingPage');
     }
   }, []);

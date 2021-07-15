@@ -15,15 +15,17 @@ export default function Titleindex({ title, navigation }: TProps) {
     return (
       <>
         <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
-        <TouchableOpacity onPress={handleChangeStack}>
-          <Image
-            source={require('assets/images/title/popup.png')}
-            style={{
-              width: 46,
-              height: 46,
-            }}
-          />
-        </TouchableOpacity>
+        {title === 'Gallery' ? (
+          <TouchableOpacity onPress={handleChangeStack}>
+            <Image
+              source={require('assets/images/title/popup.png')}
+              style={{
+                width: 46,
+                height: 46,
+              }}
+            />
+          </TouchableOpacity>
+        ) : null}
       </>
     );
   };

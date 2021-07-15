@@ -7,10 +7,7 @@ type TProps = {
 };
 
 export default function PhotoList({ navigation }: TProps) {
-  const { setCurrentStack } = useStackContext();
-
   const isCallStackNavigator = () => {
-    setCurrentStack('Write');
     navigation.navigate('WriteStack');
   };
 

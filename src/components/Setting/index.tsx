@@ -4,17 +4,12 @@ import useStackContext from '@/lib/context/useStackContext';
 import Title from '@/components/Title';
 
 type TProps = {
-  route: any;
   navigation: any;
 };
 
 type TStack = 'GalleryStack' | 'FAQStack';
 
-export default function SettingIndex({ route, navigation }: TProps) {
-  const { setCurrentStack } = useStackContext();
-
-  const goBack = navigation.goBack;
-
+export default function SettingIndex({ navigation }: TProps) {
   const isCallStackScreen = useCallback((screen: TStack) => {
     if (screen === 'GalleryStack') {
       navigation.navigate('GalleryStack');
