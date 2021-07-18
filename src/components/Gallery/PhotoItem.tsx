@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import Layout from '@/constants/Layout';
+import SVGIcon from '@/lib/svg/SVGIcon';
+
 type Tprop = {
   src: string;
   isCallStackNavigator: () => void;
@@ -23,6 +25,7 @@ export default function PhotoItem({ src, isCallStackNavigator, IsEffect }: Tprop
           backgroundColor: '#c1c1c1',
         }}
         onPress={isCallStackNavigator}>
+        <SVGIcon icon={'CheckBlack'} size={24} />
         <ImageBackground
           source={{ uri: src }}
           style={{
