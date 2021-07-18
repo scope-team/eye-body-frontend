@@ -14,9 +14,11 @@ type ObjType = {
 };
 
 import CheckBlack from '@/assets/icons/gallery/check_black.svg';
+import Popup from '@/assets/icons/title/popup.svg';
 
 const icons: ObjType = {
   check_black: CheckBlack,
+  popup: Popup,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-
-const popup = require('assets/images/title/popup.png');
+import SVGIcon from '@/lib/svg/SVGIcon';
 
 type TProps = {
   title: string;
@@ -19,13 +18,7 @@ export default function Titleindex({ title, navigation }: TProps) {
         <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
-            <Image
-              source={popup}
-              style={{
-                width: 46,
-                height: 46,
-              }}
-            />
+            <SVGIcon icon="popup" size="46" />
           </TouchableOpacity>
         ) : null}
       </>
