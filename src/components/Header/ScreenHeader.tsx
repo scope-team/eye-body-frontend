@@ -6,6 +6,7 @@
 
 import React from 'react';
 import { View, Image } from 'react-native';
+
 const arrowClose = require('assets/images/header/arrow_back.png');
 
 type TProps = {};
