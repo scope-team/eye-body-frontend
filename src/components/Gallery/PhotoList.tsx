@@ -1,23 +1,17 @@
-import React, { useEffect } from 'react';
-import { View, TouchableOpacity, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import CameraRoll from '@react-native-community/cameraroll';
+import { View, FlatList } from 'react-native';
+import { MOCK_IMAGE_ARRAY } from '@/constants/gallery/mock';
 import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
 };
+const isEffect = true;
 
 export default function PhotoList({ navigation }: TProps) {
-  const MOCK_IMAGE_ARRAY = [
-    'assets/images/mock/img1.jpeg',
-    'assets/images/mock/img2.jpeg',
-    'assets/images/mock/img3.jpeg',
-    'assets/images/mock/img4.jpeg',
-    'assets/images/mock/img5.jpeg',
-  ];
-
-  const IsEffect = true;
+  const [selectedPhoto, setSelectedPhoto] = useState<number[]>([]);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -38,6 +32,10 @@ export default function PhotoList({ navigation }: TProps) {
     // getPhotos();
   }, []);
 
+  const handleCheckPhoto = (index: number) => {
+    setSelectedPhoto([...selectedPhoto, index]);
+  };
+
   return (
     <View
       style={{
@@ -52,9 +50,16 @@ export default function PhotoList({ navigation }: TProps) {
         horizontal={false}
         numColumns={3}
         keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
           return (
-            <PhotoItem src={item} isCallStackNavigator={isCallStackNavigator} IsEffect={IsEffect} />
+            <PhotoItem
+              src={item}
+              index={index}
+              isCallStackNavigator={isCallStackNavigator}
+              isEffect={isEffect}
+              isChecked={selectedPhoto.includes(index) ? true : false}
+              handleCheckPhoto={handleCheckPhoto}
+            />
           );
         }}
       />
