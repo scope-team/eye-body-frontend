@@ -25,7 +25,7 @@ export default function PhotoItem({ src, isCallStackNavigator, IsEffect }: Tprop
           backgroundColor: '#c1c1c1',
         }}
         onPress={isCallStackNavigator}>
-        <SVGIcon icon={'CheckBlack'} size={24} />
+        <SVGIcon icon="check_black" size="24" />
         <ImageBackground
           source={{ uri: src }}
           style={{
