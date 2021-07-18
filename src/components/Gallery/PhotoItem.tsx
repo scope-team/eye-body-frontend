@@ -5,20 +5,20 @@ import SVGIcon from '@/lib/svg/SVGIcon';
 
 type Tprop = {
   src: string;
-  index: number;
+  id: number;
   isCallStackNavigator: () => void;
   isEffect: boolean;
-  isChecked: boolean;
-  handleCheckPhoto: (index: number) => void;
+  isSelect: boolean;
+  handleCheckPhoto: (id: number) => void;
 };
 
 export default function PhotoItem({
   src,
-  index,
+  id,
   isCallStackNavigator,
   handleCheckPhoto,
   isEffect,
-  isChecked,
+  isSelect,
 }: Tprop) {
   return (
     <View>
@@ -30,17 +30,18 @@ export default function PhotoItem({
           backgroundColor: '#c1c1c1',
         }}>
         {isEffect ? (
-          <TouchableOpacity
+          <View
             style={{
               position: 'absolute',
               top: 5,
               right: 5,
-            }}
-            onPress={() => handleCheckPhoto(index)}>
-            <SVGIcon icon={isChecked ? 'check_complete' : 'empty_white_circle'} size="24" />
-          </TouchableOpacity>
+            }}>
+            <TouchableOpacity onPress={() => handleCheckPhoto(id)}>
+              <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
+            </TouchableOpacity>
+          </View>
         ) : null}
-        <TouchableOpacity onPress={isCallStackNavigator}>
+        {/* <TouchableOpacity onPress={isCallStackNavigator}>
           <ImageBackground
             source={{ uri: src }}
             style={{
@@ -49,7 +50,7 @@ export default function PhotoItem({
               height: '100%',
             }}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </View>
   );

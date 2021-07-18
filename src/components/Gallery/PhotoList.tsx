@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import CameraRoll from '@react-native-community/cameraroll';
 import { View, FlatList } from 'react-native';
-import { MOCK_IMAGE_ARRAY } from '@/constants/gallery/mock';
 import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
+import { MOCK_IMAGE_ARRAY } from '@/constants/gallery/mock';
+
+type TPhotos = {
+  src: string;
+  id: number;
+  isSelect: boolean;
+};
 
 type TProps = {
   navigation: any;
 };
+
+type IselectedPhoto = {
+  selectedPhoto: string[];
+};
+
 const isEffect = true;
 
 export default function PhotoList({ navigation }: TProps) {
-  const [selectedPhoto, setSelectedPhoto] = useState<number[]>([]);
+  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
+
+  useEffect(() => {
+    setPhotoList(MOCK_IMAGE_ARRAY);
+  }, []);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -32,8 +47,11 @@ export default function PhotoList({ navigation }: TProps) {
     // getPhotos();
   }, []);
 
-  const handleCheckPhoto = (index: number) => {
-    setSelectedPhoto([...selectedPhoto, index]);
+  const handleCheckPhoto = (id: number) => {
+    const newArray = photoList.map(el => {
+      return el.id === id ? { ...el, isSelect: !el.isSelect } : el;
+    });
+    setPhotoList(newArray);
   };
 
   return (
@@ -46,18 +64,18 @@ export default function PhotoList({ navigation }: TProps) {
       }}>
       <FlatList
         scrollEnabled={false}
-        data={MOCK_IMAGE_ARRAY}
+        data={photoList}
         horizontal={false}
         numColumns={3}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item, index }) => {
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => {
           return (
             <PhotoItem
-              src={item}
-              index={index}
+              src={item.src}
+              id={item.id}
               isCallStackNavigator={isCallStackNavigator}
               isEffect={isEffect}
-              isChecked={selectedPhoto.includes(index) ? true : false}
+              isSelect={item.isSelect}
               handleCheckPhoto={handleCheckPhoto}
             />
           );
