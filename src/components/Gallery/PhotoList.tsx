@@ -17,6 +17,8 @@ export default function PhotoList({ navigation }: TProps) {
     'assets/images/mock/img5.jpeg',
   ];
 
+  const IsEffect = true;
+
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -51,7 +53,9 @@ export default function PhotoList({ navigation }: TProps) {
         numColumns={3}
         keyExtractor={(item, index) => index.toString()}
         renderItem={({ item }) => {
-          return <PhotoItem src={item} isCallStackNavigator={isCallStackNavigator} />;
+          return (
+            <PhotoItem src={item} isCallStackNavigator={isCallStackNavigator} IsEffect={IsEffect} />
+          );
         }}
       />
     </View>
