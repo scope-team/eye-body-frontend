@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
+import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
@@ -8,6 +9,14 @@ type TProps = {
 };
 
 export default function PhotoList({ navigation }: TProps) {
+  const MOCK_IMAGE_ARRAY = [
+    'assets/images/mock/img1.jpeg',
+    'assets/images/mock/img2.jpeg',
+    'assets/images/mock/img3.jpeg',
+    'assets/images/mock/img4.jpeg',
+    'assets/images/mock/img5.jpeg',
+  ];
+
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -29,28 +38,9 @@ export default function PhotoList({ navigation }: TProps) {
 
   return (
     <View style={{ flexDirection: 'row', height: '100%', backgroundColor: '#202020' }}>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
-        }}
-        onPress={isCallStackNavigator}></TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
-        }}></TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
-        }}></TouchableOpacity>
+      {MOCK_IMAGE_ARRAY.map(src => (
+        <PhotoItem src={src} isCallStackNavigator={isCallStackNavigator} key={src} />
+      ))}
     </View>
   );
 }
