@@ -10,7 +10,6 @@ type TProps = {
 
 export default function GalleryIndex({ navigation }: TProps) {
   const { GalleryStackType } = useStackContext();
-  console.log(GalleryStackType);
   return (
     <View>
       <Title title={GalleryStackType} navigation={navigation} />
