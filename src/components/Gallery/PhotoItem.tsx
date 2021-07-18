@@ -4,9 +4,10 @@ import Layout from '@/constants/Layout';
 type Tprop = {
   src: string;
   isCallStackNavigator: () => void;
+  IsEffect: boolean;
 };
 
-export default function PhotoItem({ src, isCallStackNavigator }: Tprop) {
+export default function PhotoItem({ src, isCallStackNavigator, IsEffect }: Tprop) {
   return (
     <View
       style={{
