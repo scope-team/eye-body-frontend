@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
 import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
@@ -37,10 +37,23 @@ export default function PhotoList({ navigation }: TProps) {
   }, []);
 
   return (
-    <View style={{ flexDirection: 'row', height: '100%', backgroundColor: '#202020' }}>
-      {MOCK_IMAGE_ARRAY.map(src => (
-        <PhotoItem src={src} isCallStackNavigator={isCallStackNavigator} key={src} />
-      ))}
+    <View
+      style={{
+        height: '100%',
+        backgroundColor: '#202020',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <FlatList
+        scrollEnabled={false}
+        data={MOCK_IMAGE_ARRAY}
+        horizontal={false}
+        numColumns={3}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => {
+          return <PhotoItem src={item} isCallStackNavigator={isCallStackNavigator} />;
+        }}
+      />
     </View>
   );
 }
