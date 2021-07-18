@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 
+const popup = require('assets/images/title/popup.png');
+
 type TProps = {
   title: string;
   navigation: any;
@@ -18,7 +20,7 @@ export default function Titleindex({ title, navigation }: TProps) {
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
             <Image
-              source={require('assets/images/title/popup.png')}
+              source={popup}
               style={{
                 width: 46,
                 height: 46,
