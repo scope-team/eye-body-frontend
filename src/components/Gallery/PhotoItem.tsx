@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
-
+import Layout from '@/constants/Layout';
 type Tprop = {
   src: string;
   isCallStackNavigator: () => void;
@@ -8,7 +8,12 @@ type Tprop = {
 
 export default function PhotoItem({ src, isCallStackNavigator }: Tprop) {
   return (
-    <View>
+    <View
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'wrap',
+      }}>
       <TouchableOpacity
         style={{
           width: 100,
@@ -21,11 +26,11 @@ export default function PhotoItem({ src, isCallStackNavigator }: Tprop) {
           source={{ uri: src }}
           style={{
             justifyContent: 'space-between',
-            width: Layout.window.width,
-            height: Layout.window.width * (426 / 1401),
-          }}></ImageBackground>
+            width: '100%',
+            height: '100%',
+          }}
+        />
       </TouchableOpacity>
-      <Text>{src}</Text>
     </View>
   );
 }
