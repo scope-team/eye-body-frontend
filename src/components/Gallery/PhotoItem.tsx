@@ -16,7 +16,15 @@ export default function PhotoItem({ src, isCallStackNavigator }: Tprop) {
           margin: 10,
           backgroundColor: '#c1c1c1',
         }}
-        onPress={isCallStackNavigator}></TouchableOpacity>
+        onPress={isCallStackNavigator}>
+        <ImageBackground
+          source={{ uri: src }}
+          style={{
+            justifyContent: 'space-between',
+            width: Layout.window.width,
+            height: Layout.window.width * (426 / 1401),
+          }}></ImageBackground>
+      </TouchableOpacity>
       <Text>{src}</Text>
     </View>
   );
