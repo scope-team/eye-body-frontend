@@ -2,11 +2,11 @@ import React from 'react';
 
 interface Iprops {
   icon: string;
-  size: number;
-  width?: number;
-  height?: number;
+  size: string;
+  width?: string;
+  height?: string;
   style?: object;
-  stroke?: number;
+  stroke?: string;
 }
 
 type ObjType = {
@@ -16,7 +16,7 @@ type ObjType = {
 import CheckBlack from '@/assets/icons/gallery/check_black.svg';
 
 const icons: ObjType = {
-  CheckBlack,
+  check_black: CheckBlack,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {
@@ -24,6 +24,7 @@ const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {
   if (Icon) {
     return <Icon width={width || size} height={height || size} style={style} stroke={stroke} />;
   }
+
   return null;
 };
 
