@@ -9,14 +9,14 @@ type Tprop = {
   isCallStackNavigator: () => void;
   isEffect: boolean;
   isSelect: boolean;
-  handleCheckPhoto: (id: number) => void;
+  selectedPhotoHandler: (id: number) => void;
 };
 
-export default function PhotoItem({
+export default React.memo(function PhotoItem({
   src,
   id,
   isCallStackNavigator,
-  handleCheckPhoto,
+  selectedPhotoHandler,
   isEffect,
   isSelect,
 }: Tprop) {
@@ -36,7 +36,7 @@ export default function PhotoItem({
               top: 5,
               right: 5,
             }}>
-            <TouchableOpacity onPress={() => handleCheckPhoto(id)}>
+            <TouchableOpacity onPress={() => selectedPhotoHandler(id)}>
               <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
             </TouchableOpacity>
           </View>
@@ -54,4 +54,4 @@ export default function PhotoItem({
       </View>
     </View>
   );
-}
+});

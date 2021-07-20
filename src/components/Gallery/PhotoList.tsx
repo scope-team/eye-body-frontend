@@ -3,27 +3,20 @@ import CameraRoll from '@react-native-community/cameraroll';
 import { View, FlatList } from 'react-native';
 import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
-import { MOCK_IMAGE_ARRAY } from '@/constants/gallery/mock';
-
-type TPhotos = {
-  src: string;
-  id: number;
-  isSelect: boolean;
-};
 
 type TProps = {
   navigation: any;
+  photoList: any[];
+  selectedPhotoHandler: (id: number) => void;
 };
 
 const isEffect = true;
 
-export default function PhotoList({ navigation }: TProps) {
-  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
-
-  useEffect(() => {
-    setPhotoList(MOCK_IMAGE_ARRAY);
-  }, []);
-
+export default React.memo(function PhotoList({
+  navigation,
+  photoList,
+  selectedPhotoHandler,
+}: TProps) {
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -72,11 +65,11 @@ export default function PhotoList({ navigation }: TProps) {
               isCallStackNavigator={isCallStackNavigator}
               isEffect={isEffect}
               isSelect={item.isSelect}
-              handleCheckPhoto={handleCheckPhoto}
+              selectedPhotoHandler={selectedPhotoHandler}
             />
           );
         }}
       />
     </View>
   );
-}
+});
