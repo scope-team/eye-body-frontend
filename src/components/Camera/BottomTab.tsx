@@ -4,11 +4,12 @@ import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
+  takePhoto: () => void;
 };
 
 type TRootStack = 'GalleryPage' | 'SettingPage';
 
-export default function BottomTab({ navigation }: TProps) {
+export default function BottomTab({ navigation, takePhoto }: TProps) {
   const handleChangeStack = useCallback((stack: TRootStack) => {
     if (stack === 'GalleryPage') {
       navigation.navigate('GalleryPage');
@@ -32,7 +33,9 @@ export default function BottomTab({ navigation }: TProps) {
       <Text style={{ color: 'white' }} onPress={() => handleChangeStack('GalleryPage')}>
         앨범
       </Text>
-      <Text style={{ color: 'white' }}>촬영버튼</Text>
+      <Text style={{ color: 'white' }} onPress={takePhoto}>
+        촬영버튼
+      </Text>
       <Text style={{ color: 'white' }} onPress={() => handleChangeStack('SettingPage')}>
         세팅
       </Text>

@@ -61,9 +61,5 @@ buck-out/
 # API keys
 .env
 
-# Lock file
-package-lock.json
-yarn.lock
-
 # etc
 /.vscode

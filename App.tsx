@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import RootStack from '@navigation/RootStack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { stackContext, TGalleryStack, TPopupStack } from '@/lib/context/useStackContext';
 import { NavigationContainer } from '@react-navigation/native';
 
 type TProps = {};
@@ -14,12 +15,18 @@ const client = new ApolloClient({
 });
 
 const App = ({}: TProps) => {
+  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('Select');
+  const [PopupStackType, setPopupStackType] = useState<TPopupStack>('SelectGuide');
+
   return (
     <ApolloProvider client={client}>
       <StatusBar barStyle="light-content" />
-      <NavigationContainer>
-        <RootStack />
-      </NavigationContainer>
+      <stackContext.Provider
+        value={{ GalleryStackType, setCurrentStack, PopupStackType, setPopupStackType }}>
+        <NavigationContainer>
+          <RootStack />
+        </NavigationContainer>
+      </stackContext.Provider>
     </ApolloProvider>
   );
 };

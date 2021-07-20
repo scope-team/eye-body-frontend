@@ -10,6 +10,8 @@
     "lint": "eslint --ext .tsx --ext .ts src/"
   },
   "dependencies": {
+    "@react-native-community/cameraroll": "^4.0.4",
+    "react-native-camera": "^4.0.0",
     "graphql": "^15.5.0",
     "lodash": "^4.17.21",
     "postcss": "^7.0.36",
