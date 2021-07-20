@@ -16,6 +16,7 @@ type ObjType = {
 import CheckBlack from '@/assets/icons/gallery/check_black.svg';
 import CheckNeon from '@/assets/icons/gallery/check_neon.svg';
 import CheckComplete from '@/assets/icons/gallery/check_complete.svg';
+import CanclePhoto from '@/assets/icons/header/cancle_photo.svg';
 import EmptyWhiteCircle from '@/assets/icons/gallery/empty_white_circle.svg';
 import Popup from '@/assets/icons/title/popup.svg';
 
@@ -25,6 +26,7 @@ const icons: ObjType = {
   check_complete: CheckComplete,
   popup: Popup,
   empty_white_circle: EmptyWhiteCircle,
+  cancle_photo: CanclePhoto,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {

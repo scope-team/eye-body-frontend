@@ -8,14 +8,22 @@ type TProps = {
 };
 
 export default function PopupIndex({ navigation }: TProps) {
-  const { PopupStackType } = useStackContext();
+  let { PopupStackType } = useStackContext();
+  PopupStackType = 'EditPhoto';
+
+  const goToEditPhotoPage = (title: string) => {
+    navigation.navigate('GalleryStack', { title });
+  };
 
   const render = () => {
     if (PopupStackType === 'EditPhoto') {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>
           <Text style={{ color: 'white', fontSize: 20 }}>어떻게 편집할까요?</Text>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              goToEditPhotoPage('Compare');
+            }}>
             <Text style={{ color: 'white', fontSize: 20 }}>Compare</Text>
           </TouchableOpacity>
           <TouchableOpacity>

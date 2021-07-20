@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
+import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   title: string;
