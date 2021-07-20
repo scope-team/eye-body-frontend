@@ -15,10 +15,6 @@ type TProps = {
   navigation: any;
 };
 
-type IselectedPhoto = {
-  selectedPhoto: string[];
-};
-
 const isEffect = true;
 
 export default function PhotoList({ navigation }: TProps) {
