@@ -3,7 +3,7 @@ import { View, Alert, ToastAndroid } from 'react-native';
 import { RNCamera } from 'react-native-camera';
 import CameraRoll from '@react-native-community/cameraroll';
 import { PERMISSIONS, RESULTS, request } from 'react-native-permissions';
-import BottomTab from '@components/Camera/BottomTab';
+import BottomTab from '../../components/Camera/BottomTab';
 
 type TProps = {
   navigation: any;
@@ -34,8 +34,8 @@ export default function CameraIndex({ navigation }: TProps) {
       });
       if (data) {
         console.log(data);
-        // const result = await CameraRoll.save(data.uri);
-        // console.log(result);
+        const result = await CameraRoll.save(data.uri);
+        console.log(result);
         Alert.alert('Picture Taken!', data.uri);
       }
     }

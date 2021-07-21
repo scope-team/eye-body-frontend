@@ -15,7 +15,6 @@ export const stackContext = createContext<TStackContext | null>(null);
 
 export default function useStackContext() {
   let result = useContext(stackContext);
-  return 'Compare';
   if (!result) {
     throw new Error();
   }
