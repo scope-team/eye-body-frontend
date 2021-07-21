@@ -1,7 +1,7 @@
-import useStackContext from '@/lib/context/useStackContext';
+import useStackContext from '../../lib/context/useStackContext';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Title from '@/components/Title';
+import Title from '../../components/Title';
 
 type TProps = {
   navigation: any;
@@ -9,10 +9,9 @@ type TProps = {
 
 export default function PopupIndex({ navigation }: TProps) {
   let { PopupStackType } = useStackContext();
-  PopupStackType = 'EditPhoto';
 
-  const goToEditPhotoPage = (title: string) => {
-    navigation.navigate('GalleryStack', { title });
+  const goToEditPhotoPage = () => {
+    navigation.navigate('GalleryStack');
   };
 
   const render = () => {
@@ -22,7 +21,7 @@ export default function PopupIndex({ navigation }: TProps) {
           <Text style={{ color: 'white', fontSize: 20 }}>어떻게 편집할까요?</Text>
           <TouchableOpacity
             onPress={() => {
-              goToEditPhotoPage('Compare');
+              goToEditPhotoPage();
             }}>
             <Text style={{ color: 'white', fontSize: 20 }}>Compare</Text>
           </TouchableOpacity>

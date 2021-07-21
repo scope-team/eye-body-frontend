@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import SVGIcon from '@/lib/svg/SVGIcon';
-import useStackContext from '@/lib/context/useStackContext';
+import SVGIcon from '../../lib/svg/SVGIcon';
+import useStackContext from '../../lib/context/useStackContext';
 
 type TProps = {
   title: string;
@@ -9,8 +9,11 @@ type TProps = {
 };
 
 export default function Titleindex({ title, navigation }: TProps) {
+  const { setPopupStackType } = useStackContext();
+
   const handleChangeStack = () => {
     navigation.navigate('PopupStack');
+    setPopupStackType('EditPhoto');
   };
 
   const renderTitle = () => {

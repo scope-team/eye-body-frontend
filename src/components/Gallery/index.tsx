@@ -16,23 +16,31 @@ type TProps = {
   navigation: any;
 };
 
+type TImages = {
+  fileSize: number;
+  filename: string;
+  height: number;
+  playableDuration: any;
+  uri: string;
+  width: number;
+};
+
+type TPhotos = {
+  group_name: string;
+  image: TImages;
+  location: string | null;
+  timestamp: number;
+  type: string;
+};
+
 export default function GalleryIndex({ navigation }: TProps) {
-  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
   const [selectedPhotos, setSelectedPhotos] = useState<TPhotos[]>([]);
 
   const { GalleryStackType } = useStackContext();
-  console.log(GalleryStackType);
 
-  useEffect(() => {
-    setPhotoList(MOCK_IMAGE_ARRAY);
-  }, []);
+  useEffect(() => {}, []);
 
-  const selectedPhotoHandler = (id: number) => {
-    const newArray = photoList.map(el => {
-      return el.id === id ? { ...el, isSelect: !el.isSelect } : el;
-    });
-    setPhotoList(newArray);
-  };
+  const selectedPhotoHandler = (id: string) => {};
 
   return (
     <View>
@@ -41,11 +49,7 @@ export default function GalleryIndex({ navigation }: TProps) {
       ) : (
         <EditPhotoHeader selectedPhotos={selectedPhotos} />
       )}
-      <PhotoList
-        navigation={navigation}
-        selectedPhotoHandler={selectedPhotoHandler}
-        photoList={photoList}
-      />
+      <PhotoList navigation={navigation} selectedPhotoHandler={selectedPhotoHandler} />
     </View>
   );
 }

@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from 'react';
+import PhotoItem from '../../components/Gallery/PhotoItem';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
-import { View, FlatList } from 'react-native';
-import PhotoItem from '@/components/Gallery/PhotoItem';
 import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
-  photoList: any[];
-  selectedPhotoHandler: (id: number) => void;
+  selectedPhotoHandler?: (id: string) => void;
+};
+
+type TImages = {
+  fileSize: number;
+  filename: string;
+  height: number;
+  playableDuration: number | null;
+  uri: string;
+  width: number;
+};
+
+type TPhotos = {
+  node: {
+    group_name: string;
+    image: TImages;
+    location: string | null;
+    timestamp: number;
+    type: string;
+  };
 };
 
 const isEffect = true;
 
-export default React.memo(function PhotoList({
-  navigation,
-  photoList,
-  selectedPhotoHandler,
-}: TProps) {
+export default React.memo(function PhotoList({ navigation, selectedPhotoHandler }: TProps) {
+  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -26,7 +41,7 @@ export default React.memo(function PhotoList({
       const { edges } = await CameraRoll.getPhotos({
         first: 10,
       });
-      console.log(edges);
+      setPhotoList(edges);
     } catch (error) {
       console.log('getPhoto', error);
     }
@@ -58,10 +73,11 @@ export default React.memo(function PhotoList({
         numColumns={3}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
+          console.log(item);
           return (
             <PhotoItem
-              src={item.src}
-              id={item.id}
+              src={item.node.image.uri}
+              id={item.node.image.uri}
               isCallStackNavigator={isCallStackNavigator}
               isEffect={isEffect}
               isSelect={item.isSelect}

@@ -1,9 +1,9 @@
 import 'react-native-gesture-handler';
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
-import RootStack from '@navigation/RootStack';
+import RootStack from './src/navigation/RootStack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { stackContext, TGalleryStack, TPopupStack } from '@/lib/context/useStackContext';
+import { stackContext, TGalleryStack, TPopupStack } from './src/lib/context/useStackContext';
 import { NavigationContainer } from '@react-navigation/native';
 
 type TProps = {};
@@ -15,8 +15,8 @@ const client = new ApolloClient({
 });
 
 const App = ({}: TProps) => {
-  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('Select');
-  const [PopupStackType, setPopupStackType] = useState<TPopupStack>('SelectGuide');
+  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('');
+  const [PopupStackType, setPopupStackType] = useState<TPopupStack>('');
 
   return (
     <ApolloProvider client={client}>
