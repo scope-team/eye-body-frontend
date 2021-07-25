@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import Gallery from '@/components/GalleryPage';
-import PageHeader from '@/components/Header/PageHeader';
+import Gallery from '../components/GalleryPage';
+import PageHeader from '../components/Header/PageHeader';
 
 type TProps = {
   navigation: any;

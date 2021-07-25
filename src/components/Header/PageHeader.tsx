@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 
+const arrowClose = require('assets/images/header/arrow_close.png');
+
 type TProps = {
   navigation: any;
 };
@@ -24,7 +26,7 @@ export default function PageHeader({ navigation }: TProps) {
           handleCloseStack();
         }}>
         <Image
-          source={require('assets/images/header/arrow_close.png')}
+          source={arrowClose}
           style={{
             width: 46,
             height: 46,

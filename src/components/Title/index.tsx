@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import SVGIcon from '../../lib/svg/SVGIcon';
+import useStackContext from '../../lib/context/useStackContext';
 
 type TProps = {
   title: string;
@@ -7,8 +9,11 @@ type TProps = {
 };
 
 export default function Titleindex({ title, navigation }: TProps) {
+  const { setPopupStackType } = useStackContext();
+
   const handleChangeStack = () => {
     navigation.navigate('PopupStack');
+    setPopupStackType('EditPhoto');
   };
 
   const renderTitle = () => {
@@ -17,13 +22,7 @@ export default function Titleindex({ title, navigation }: TProps) {
         <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
-            <Image
-              source={require('assets/images/title/popup.png')}
-              style={{
-                width: 46,
-                height: 46,
-              }}
-            />
+            <SVGIcon icon="popup" size="46" />
           </TouchableOpacity>
         ) : null}
       </>

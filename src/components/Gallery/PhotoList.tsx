@@ -1,13 +1,43 @@
-import React, { useEffect } from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, Dispatch } from 'react';
+import PhotoItem from '../../components/Gallery/PhotoItem';
+import { View, TouchableOpacity, FlatList } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
 import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
+  selectedFileName?: any[];
+  selectedPhotoHandler?: (filename: string) => void;
 };
 
-export default function PhotoList({ navigation }: TProps) {
+type TImages = {
+  fileSize: number;
+  filename: string;
+  height: number;
+  playableDuration: number | null;
+  uri: string;
+  width: number;
+};
+
+type TPhotos = {
+  node: {
+    group_name: string;
+    image: TImages;
+    location: string | null;
+    timestamp: number;
+    type: string;
+  };
+};
+
+const isEffect = true;
+
+export default React.memo(function PhotoList({
+  navigation,
+  selectedFileName,
+  selectedPhotoHandler,
+}: TProps) {
+  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
+
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -17,40 +47,46 @@ export default function PhotoList({ navigation }: TProps) {
       const { edges } = await CameraRoll.getPhotos({
         first: 10,
       });
-      console.log(edges);
+      setPhotoList(edges);
     } catch (error) {
       console.log('getPhoto', error);
     }
   };
 
   useEffect(() => {
-    // getPhotos();
+    getPhotos();
   }, []);
 
   return (
-    <View style={{ flexDirection: 'row', height: '100%', backgroundColor: '#202020' }}>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
+    <View
+      style={{
+        height: '100%',
+        backgroundColor: '#202020',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+      <FlatList
+        scrollEnabled={false}
+        data={photoList}
+        horizontal={false}
+        numColumns={3}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => {
+          return (
+            <PhotoItem
+              src={item.node.image.uri}
+              filename={item.node.image.filename}
+              isCallStackNavigator={isCallStackNavigator}
+              isEffect={true}
+              isSelect={
+                selectedFileName &&
+                selectedFileName.find(p => p.filename === item.node.image.filename)
+              }
+              selectedPhotoHandler={selectedPhotoHandler}
+            />
+          );
         }}
-        onPress={isCallStackNavigator}></TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
-        }}></TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          width: 100,
-          height: 100,
-          margin: 10,
-          backgroundColor: '#c1c1c1',
-        }}></TouchableOpacity>
+      />
     </View>
   );
-}
+});

@@ -14,7 +14,7 @@ type TStackContext = {
 export const stackContext = createContext<TStackContext | null>(null);
 
 export default function useStackContext() {
-  const result = useContext(stackContext);
+  let result = useContext(stackContext);
   if (!result) {
     throw new Error();
   }

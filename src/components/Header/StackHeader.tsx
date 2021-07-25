@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
 
+const arrowBack = require('assets/images/header/arrow_back.png');
+
 type TProps = {
   navigation: any;
 };
@@ -22,7 +24,7 @@ export default function StackHeader({ navigation }: TProps) {
         }}
         onPress={handleChangeStack}>
         <Image
-          source={require('assets/images/header/arrow_back.png')}
+          source={arrowBack}
           style={{
             width: 46,
             height: 46,
