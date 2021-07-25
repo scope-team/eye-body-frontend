@@ -56,12 +56,21 @@ export default function GalleryIndex({ navigation }: TProps) {
     }
   };
 
+  const canclePhotoHandler = (filename: string) => {
+    const copied = selectedFileName.slice();
+    const filteredPhotoList = copied.filter(p => p.filename !== filename);
+    setSelectedFileName(filteredPhotoList);
+  };
+
   return (
     <View>
       {!selectedFileName.length ? (
         <Title title={GalleryStackType} navigation={navigation} />
       ) : (
-        <EditPhotoHeader selectedFileName={selectedFileName} />
+        <EditPhotoHeader
+          selectedFileName={selectedFileName}
+          canclePhotoHandler={canclePhotoHandler}
+        />
       )}
 
       <PhotoList

@@ -5,9 +5,13 @@ import Layout, { DEFAULT_PAADING } from '@/constants/Layout';
 
 type Tprops = {
   selectedFileName: any[];
+  canclePhotoHandler: (filename: string) => void;
 };
 
-export default React.memo(function EditPhotoHeader({ selectedFileName }: Tprops) {
+export default React.memo(function EditPhotoHeader({
+  selectedFileName,
+  canclePhotoHandler,
+}: Tprops) {
   return (
     <View
       style={{
@@ -32,7 +36,6 @@ export default React.memo(function EditPhotoHeader({ selectedFileName }: Tprops)
                   width: 50,
                   height: 50,
                   zIndex: 10,
-                  backgroundColor: 'red',
                   marginHorizontal: 5,
                 }}>
                 <ImageBackground
@@ -43,6 +46,13 @@ export default React.memo(function EditPhotoHeader({ selectedFileName }: Tprops)
                     height: '100%',
                   }}
                 />
+                <TouchableOpacity
+                  style={{ position: 'absolute', right: -3 }}
+                  onPress={() => {
+                    canclePhotoHandler(item.filename);
+                  }}>
+                  <SVGIcon icon={'cancle_photo'} size="20" />
+                </TouchableOpacity>
               </View>
             );
           }}
