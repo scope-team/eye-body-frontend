@@ -1,17 +1,17 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import SVGIcon from '../../lib/svg/SVGIcon';
-import useStackContext from '../../lib/context/useStackContext';
-import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
+import React, { useEffect } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import SVGIcon from '@/lib/svg/SVGIcon';
+import useStackContext from '@/lib/context/useStackContext';
+
 
 type TProps = {
   title: string;
   navigation: any;
-  selectedFileName: any[];
 };
 
-export default function Titleindex({ title, navigation, selectedFileName }: TProps) {
+export default function Titleindex({ title, navigation }: TProps) {
   const { setPopupStackType } = useStackContext();
+
 
   const handleChangeStack = () => {
     navigation.navigate('PopupStack');
@@ -19,15 +19,18 @@ export default function Titleindex({ title, navigation, selectedFileName }: TPro
   };
 
   const renderTitle = () => {
+    console.log(title);
     return (
       <>
-        <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
+        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+          <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
+        </View>
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
             <SVGIcon icon="popup" size="46" />
           </TouchableOpacity>
         ) : (
-          <EditPhotoHeader selectedFileName={selectedFileName} />
+          <SVGIcon icon={'check_black'} size="46" />
         )}
       </>
     );
@@ -40,8 +43,7 @@ export default function Titleindex({ title, navigation, selectedFileName }: TPro
         justifyContent: 'space-between',
         width: '100%',
         height: 60,
-        paddingLeft: 30,
-        paddingRight: 30,
+        paddingHorizontal: 30,
         backgroundColor: '#202020',
       }}>
       {renderTitle()}

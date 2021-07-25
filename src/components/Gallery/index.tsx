@@ -58,7 +58,11 @@ export default function GalleryIndex({ navigation }: TProps) {
 
   return (
     <View>
-      <Title title={GalleryStackType} navigation={navigation} selectedFileName={selectedFileName} />
+      {!selectedFileName.length ? (
+        <Title title={GalleryStackType} navigation={navigation} />
+      ) : (
+        <EditPhotoHeader selectedFileName={selectedFileName} />
+      )}
 
       <PhotoList
         navigation={navigation}
