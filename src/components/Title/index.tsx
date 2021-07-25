@@ -2,13 +2,15 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import SVGIcon from '../../lib/svg/SVGIcon';
 import useStackContext from '../../lib/context/useStackContext';
+import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
 
 type TProps = {
   title: string;
   navigation: any;
+  selectedFileName: any[];
 };
 
-export default function Titleindex({ title, navigation }: TProps) {
+export default function Titleindex({ title, navigation, selectedFileName }: TProps) {
   const { setPopupStackType } = useStackContext();
 
   const handleChangeStack = () => {
@@ -24,7 +26,9 @@ export default function Titleindex({ title, navigation }: TProps) {
           <TouchableOpacity onPress={handleChangeStack}>
             <SVGIcon icon="popup" size="46" />
           </TouchableOpacity>
-        ) : null}
+        ) : (
+          <EditPhotoHeader selectedFileName={selectedFileName} />
+        )}
       </>
     );
   };
