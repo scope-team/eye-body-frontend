@@ -54,7 +54,7 @@ export default React.memo(function PhotoList({
   };
 
   useEffect(() => {
-    // getPhotos();
+    getPhotos();
   }, []);
 
   return (
