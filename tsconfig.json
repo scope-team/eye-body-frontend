@@ -18,8 +18,9 @@
       "@navigation/*": ["navigation/*"],
       "@screen/*": ["screen/*"],
       "@lib/*": ["lib/*"]
-    }
+    },
+    "noImplicitAny": false
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
-  "include": ["**/*.ts", "**/*.js", "src/lib/svg/SVGIcon.tsx", "src/lib/svg/SVGIcon.tsx", "src/lib/svg/SVGIcon.tsx", "src/constants/Layout.tsx"]
+  "include": ["**/*.ts", "**/*.js"]
 }

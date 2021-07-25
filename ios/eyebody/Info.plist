@@ -2,13 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-<<<<<<< HEAD
-  <key>NSPhotoLibraryAddUsageDescription</key>
-  <string>My description about why I need this capability</string>
-  <key>NSPhotoLibraryUsageDescription</key>
-  <string>Photo Library Access Warning</string>
-=======
->>>>>>> d60e307... fix: camera 설정 변경
   <key>NSCameraUsageDescription</key>
   <string>Camera를 사용합니다</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

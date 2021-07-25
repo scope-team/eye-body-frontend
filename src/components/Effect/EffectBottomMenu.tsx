@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import ToggleSwitch from 'toggle-switch-react-native';
 
 type Tprops = {
   effectName: string;
@@ -11,21 +12,26 @@ export default function EffectBottomMenu({ effectName }: Tprops) {
       case 'Compare':
         return (
           <View>
-            <View style={{ flexDirection: 'row' }}>
-              <Text>텍스트 표시</Text>
-              <TouchableOpacity></TouchableOpacity>
-            </View>
-            <View>
-              <TouchableOpacity>
-                <Text>화이트</Text>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <Text>블랙</Text>
-              </TouchableOpacity>
-            </View>
+            <View style={{ flexDirection: 'row' }}></View>
           </View>
         );
       case 'Before & After':
+        return (
+          <View>
+            <View style={{ flexDirection: 'row' }}>
+              <ToggleSwitch
+                isOn={false}
+                onColor="green"
+                offColor="red"
+                label="텍스트 표시"
+                labelStyle={{ color: 'black', fontWeight: '900' }}
+                size="medium"
+                onToggle={(isOn: any) => console.log('changed to : ', isOn)}
+              />
+            </View>
+          </View>
+        );
+      case 'Animation':
         return (
           <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity>
@@ -37,7 +43,6 @@ export default function EffectBottomMenu({ effectName }: Tprops) {
             </TouchableOpacity>
           </View>
         );
-
       default:
         return null;
     }

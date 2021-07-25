@@ -1,4 +1,4 @@
-import useStackContext from '../../lib/context/useStackContext';
+import useStackContext, { TGalleryStack } from '../../lib/context/useStackContext';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Title from '@/components/Title';
@@ -10,7 +10,7 @@ type TProps = {
 export default function PopupIndex({ navigation }: TProps) {
   let { PopupStackType, setCurrentStack } = useStackContext();
 
-  const goToEditPhotoPage = (title: string) => {
+  const goToEditPhotoPage = (title: any) => {
     navigation.navigate('GalleryStack');
     setCurrentStack(title);
   };
@@ -25,7 +25,8 @@ export default function PopupIndex({ navigation }: TProps) {
               <TouchableOpacity
                 onPress={() => {
                   goToEditPhotoPage(title);
-                }}>
+                }}
+                key={title}>
                 <Text style={{ color: 'white', fontSize: 20 }}>{title}</Text>
               </TouchableOpacity>
             );

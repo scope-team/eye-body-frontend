@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { View, Text, ImageBackground } from 'react-native';
-import { TSelectedPhotos } from '@/components/Gallery';
+import React from 'react';
+import { View, Text, ImageBackground, FlatList } from 'react-native';
 import Layout from '@/constants/Layout';
 
 type Tprops = {
-  selectedFileName: TSelectedPhotos;
+  selectedFileName: any;
   effectName: string;
 };
 
@@ -12,7 +11,7 @@ export default function Effect({ selectedFileName, effectName }: Tprops) {
   {
     return (
       <View style={{ flexDirection: 'row', width: Layout.screen.width }}>
-        {selectedFileName.map(p => {
+        {selectedFileName.map((p: any) => {
           const uri = p.uri;
           return (
             <>
@@ -29,7 +28,7 @@ export default function Effect({ selectedFileName, effectName }: Tprops) {
                   {effectName}
                 </Text>
               ) : null}
-              <View style={{ width: 200, height: 200 }}>
+              <View style={{ width: 200, height: 200 }} key={p.uri}>
                 <ImageBackground source={{ uri }} style={{ width: '100%', height: '100%' }} />
               </View>
             </>
