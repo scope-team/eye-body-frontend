@@ -5,16 +5,16 @@ import SVGIcon from '@/lib/svg/SVGIcon';
 
 type Tprop = {
   src: string;
-  id: string;
+  filename: string;
   isCallStackNavigator: () => void;
   isEffect: boolean;
-  isSelect: boolean;
-  selectedPhotoHandler: (id: string) => void;
+  isSelect?: boolean;
+  selectedPhotoHandler?: (filename: string) => void;
 };
 
 export default React.memo(function PhotoItem({
   src,
-  id,
+  filename,
   isCallStackNavigator,
   selectedPhotoHandler,
   isEffect,
@@ -37,7 +37,7 @@ export default React.memo(function PhotoItem({
               right: 5,
               zIndex: 10,
             }}>
-            <TouchableOpacity onPress={() => selectedPhotoHandler(id)}>
+            <TouchableOpacity onPress={() => selectedPhotoHandler(filename)}>
               <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
             </TouchableOpacity>
           </View>

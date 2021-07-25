@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Dispatch } from 'react';
 import PhotoItem from '../../components/Gallery/PhotoItem';
 import { View, TouchableOpacity, FlatList } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
@@ -6,7 +6,8 @@ import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
-  selectedPhotoHandler?: (id: string) => void;
+  selectedFileName?: any[];
+  setSelectedFileName?: Dispatch<React.SetStateAction<string[]>>;
 };
 
 type TImages = {
@@ -30,8 +31,13 @@ type TPhotos = {
 
 const isEffect = true;
 
-export default React.memo(function PhotoList({ navigation, selectedPhotoHandler }: TProps) {
+export default React.memo(function PhotoList({
+  navigation,
+  selectedFileName,
+  setSelectedFileName,
+}: TProps) {
   const [photoList, setPhotoList] = useState<TPhotos[]>([]);
+
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
   };
@@ -51,11 +57,18 @@ export default React.memo(function PhotoList({ navigation, selectedPhotoHandler 
     // getPhotos();
   }, []);
 
-  const handleCheckPhoto = (id: number) => {
-    const newArray = photoList.map(el => {
-      return el.id === id ? { ...el, isSelect: !el.isSelect } : el;
-    });
-    setPhotoList(newArray);
+  const selectedPhotoHandler = (filename: string) => {
+    let copied = selectedFileName.slice();
+    const exit = copied.find(p => p.filename === filename);
+    if (exit) {
+      copied.filter(p => p.filename !== filename);
+    }
+    setSelectedFileName([
+      ...copied,
+      {
+        filename: 'filename',
+      },
+    ]);
   };
 
   return (
@@ -77,10 +90,10 @@ export default React.memo(function PhotoList({ navigation, selectedPhotoHandler 
           return (
             <PhotoItem
               src={item.node.image.uri}
-              id={item.node.image.uri}
+              filename={item.node.image.filename}
               isCallStackNavigator={isCallStackNavigator}
               isEffect={isEffect}
-              isSelect={item.isSelect}
+              isSelect={true}
               selectedPhotoHandler={selectedPhotoHandler}
             />
           );
