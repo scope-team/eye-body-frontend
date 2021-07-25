@@ -5,6 +5,7 @@ import PhotoList from '@/components/Gallery/PhotoList';
 import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
 import useStackContext from '@/lib/context/useStackContext';
 import Colors from '@/constants/Colors';
+import Layout from '@/constants/Layout';
 
 export type TProps = {
   navigation: any;
@@ -75,7 +76,7 @@ export default function GalleryIndex({ navigation }: TProps) {
   };
 
   return (
-    <View style={{}}>
+    <View style={{ height: Layout.screen.height }}>
       {!selectedFileName.length ? (
         <Title title={GalleryStackType} navigation={navigation} />
       ) : (
