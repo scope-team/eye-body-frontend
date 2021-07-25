@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import Title from '@/components/Title';
 import PhotoList from '@/components/Gallery/PhotoList';
 import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
@@ -38,11 +38,13 @@ export default function GalleryIndex({ navigation, route }: TProps) {
 
   const { GalleryStackType } = useStackContext();
 
-  useEffect(() => {
-    console.log(GalleryStackType);
-  });
+  useEffect(() => {}, []);
 
   const selectedPhotoHandler = ({ filename, uri }: TSelectedPhotos) => {
+    if (GalleryStackType !== 'Animation' && selectedFileName.length >= 2) {
+      Alert.alert('2장을 초과했습니다.');
+      return;
+    }
     let copied = selectedFileName.slice();
     const exit = copied.find(p => p.filename === filename);
     if (exit) {
