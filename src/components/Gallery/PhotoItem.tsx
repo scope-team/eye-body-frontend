@@ -2,18 +2,19 @@ import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import Layout from '@/constants/Layout';
 import SVGIcon from '@/lib/svg/SVGIcon';
+import { TSelectedPhotos } from '@/components/Gallery';
 
 type Tprop = {
-  src: string;
+  uri: string;
   filename: string;
   isCallStackNavigator: () => void;
   isEffect: boolean;
   isSelect?: boolean;
-  selectedPhotoHandler?: (filename: string) => void;
+  selectedPhotoHandler?: ({ filename, uri }: TSelectedPhotos) => void;
 };
 
 export default React.memo(function PhotoItem({
-  src,
+  uri,
   filename,
   isCallStackNavigator,
   selectedPhotoHandler,
@@ -37,14 +38,14 @@ export default React.memo(function PhotoItem({
               right: 5,
               zIndex: 10,
             }}>
-            <TouchableOpacity onPress={() => selectedPhotoHandler(filename)}>
+            <TouchableOpacity onPress={() => selectedPhotoHandler({ filename, uri })}>
               <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
             </TouchableOpacity>
           </View>
         ) : null}
         <TouchableOpacity onPress={isCallStackNavigator}>
           <ImageBackground
-            source={{ uri: src }}
+            source={{ uri }}
             style={{
               justifyContent: 'space-between',
               width: '100%',

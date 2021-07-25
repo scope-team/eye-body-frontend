@@ -3,11 +3,12 @@ import PhotoItem from '../../components/Gallery/PhotoItem';
 import { View, TouchableOpacity, FlatList } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
 import useStackContext from '@/lib/context/useStackContext';
+import { TSelectedPhotos } from '@/components/Gallery';
 
 type TProps = {
   navigation: any;
   selectedFileName?: any[];
-  selectedPhotoHandler?: (filename: string) => void;
+  selectedPhotoHandler?: ({ filename, uri }: TSelectedPhotos) => void;
 };
 
 type TImages = {
@@ -74,7 +75,7 @@ export default React.memo(function PhotoList({
         renderItem={({ item }) => {
           return (
             <PhotoItem
-              src={item.node.image.uri}
+              uri={item.node.image.uri}
               filename={item.node.image.filename}
               isCallStackNavigator={isCallStackNavigator}
               isEffect={true}

@@ -1,6 +1,6 @@
 import React, { Dispatch, createContext, useContext } from 'react';
 
-export type TGalleryStack = 'Select' | 'Compare' | 'Befor & After' | 'Animation';
+export type TGalleryStack = 'Select' | 'Compare' | 'Before & After' | 'Animation';
 
 export type TPopupStack = 'EditPhoto' | 'SelectGuide';
 

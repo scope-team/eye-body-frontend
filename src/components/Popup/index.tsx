@@ -8,10 +8,11 @@ type TProps = {
 };
 
 export default function PopupIndex({ navigation }: TProps) {
-  let { PopupStackType } = useStackContext();
+  let { PopupStackType, setCurrentStack } = useStackContext();
 
-  const goToEditPhotoPage = () => {
+  const goToEditPhotoPage = (title: string) => {
     navigation.navigate('GalleryStack');
+    setCurrentStack(title);
   };
 
   const render = () => {
@@ -19,30 +20,29 @@ export default function PopupIndex({ navigation }: TProps) {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>
           <Text style={{ color: 'white', fontSize: 20 }}>어떻게 편집할까요?</Text>
-          <TouchableOpacity
-            onPress={() => {
-              goToEditPhotoPage();
-            }}>
-            <Text style={{ color: 'white', fontSize: 20 }}>Compare</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{ color: 'white', fontSize: 20 }}>Befor & After</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{ color: 'white', fontSize: 20 }}>Animation</Text>
-          </TouchableOpacity>
+          {['Compare', 'Before & After', 'Animation'].map(title => {
+            return (
+              <TouchableOpacity
+                onPress={() => {
+                  goToEditPhotoPage(title);
+                }}>
+                <Text style={{ color: 'white', fontSize: 20 }}>{title}</Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       );
     } else if (PopupStackType === 'SelectGuide') {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>
           <Text style={{ color: 'white', fontSize: 20 }}>가이드 사진을 어디서 가져올까요?</Text>
-          <TouchableOpacity>
-            <Text style={{ color: 'white', fontSize: 20 }}>Eye Body</Text>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Text style={{ color: 'white', fontSize: 20 }}>My Phone</Text>
-          </TouchableOpacity>
+          {['Eye Body', 'My Phone'].map(title => {
+            return (
+              <TouchableOpacity>
+                <Text style={{ color: 'white', fontSize: 20 }}>{title}</Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       );
     }
