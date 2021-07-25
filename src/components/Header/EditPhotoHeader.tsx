@@ -6,11 +6,13 @@ import Layout, { DEFAULT_PAADING } from '@/constants/Layout';
 type Tprops = {
   selectedFileName: any[];
   canclePhotoHandler: (filename: string) => void;
+  goToEffectScreen: () => void;
 };
 
 export default React.memo(function EditPhotoHeader({
   selectedFileName,
   canclePhotoHandler,
+  goToEffectScreen,
 }: Tprops) {
   return (
     <View
@@ -62,7 +64,10 @@ export default React.memo(function EditPhotoHeader({
             );
           }}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            goToEffectScreen();
+          }}>
           <SVGIcon icon={'check_neon'} size="46" style={{ marginRight: 50 }} />
         </TouchableOpacity>
       </View>

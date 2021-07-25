@@ -6,13 +6,14 @@ import useStackContext from '../../lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
+  name: string;
 };
 
-export default function GalleryPageIndex({ navigation }: TProps) {
+export default function GalleryPageIndex({ navigation, name }: TProps) {
   return (
     <View>
       <Title title="Gallery" navigation={navigation} />
-      <PhotoList navigation={navigation} />
+      <PhotoList navigation={navigation} name={name} />
     </View>
   );
 }

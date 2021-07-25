@@ -8,7 +8,7 @@ import Colors from '@/constants/Colors';
 
 export type TProps = {
   navigation: any;
-  route: any;
+  name: string;
 };
 
 export type TImages = {
@@ -33,7 +33,7 @@ export type TSelectedPhotos = {
   uri: string;
 };
 
-export default function GalleryIndex({ navigation, route }: TProps) {
+export default function GalleryIndex({ navigation, name }: TProps) {
   const [selectedFileName, setSelectedFileName] = useState<TSelectedPhotos[]>([]);
 
   const { GalleryStackType } = useStackContext();
@@ -68,6 +68,10 @@ export default function GalleryIndex({ navigation, route }: TProps) {
     setSelectedFileName(filteredPhotoList);
   };
 
+  const goToEffectScreen = () => {
+    navigation.navigate('EffectPage');
+  };
+
   return (
     <View style={{}}>
       {!selectedFileName.length ? (
@@ -76,6 +80,7 @@ export default function GalleryIndex({ navigation, route }: TProps) {
         <EditPhotoHeader
           selectedFileName={selectedFileName}
           canclePhotoHandler={canclePhotoHandler}
+          goToEffectScreen={goToEffectScreen}
         />
       )}
       <View
