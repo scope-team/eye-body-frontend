@@ -14,7 +14,6 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
   const handleChangeStack = () => {
     navigation.goBack();
   };
-
   const renderHeader = () => {
     return (
       <SafeAreaView
