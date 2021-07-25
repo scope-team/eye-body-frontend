@@ -34,22 +34,24 @@ type TPhotos = {
 };
 
 export default function GalleryIndex({ navigation }: TProps) {
-  const [selectedPhotos, setSelectedPhotos] = useState<TPhotos[]>([]);
+  const [selectedFileName, setSelectedFileName] = useState<any[]>([]);
 
   const { GalleryStackType } = useStackContext();
 
-  useEffect(() => {}, []);
-
-  const selectedPhotoHandler = (id: string) => {};
+  useEffect(() => {});
 
   return (
     <View>
-      {!selectedPhotos.length ? (
+      {!selectedFileName.length ? (
         <Title title={GalleryStackType} navigation={navigation} />
       ) : (
-        <EditPhotoHeader selectedPhotos={selectedPhotos} />
+        <EditPhotoHeader selectedFileName={selectedFileName} />
       )}
-      <PhotoList navigation={navigation} selectedPhotoHandler={selectedPhotoHandler} />
+      <PhotoList
+        navigation={navigation}
+        setSelectedFileName={setSelectedFileName}
+        selectedFileName={selectedFileName}
+      />
     </View>
   );
 }
