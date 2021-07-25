@@ -15,6 +15,7 @@ type TProps = {
 export default function EffectPage({ navigation, route }: TProps) {
   const [isButtonOn, setIsButtonOn] = useState<boolean>(false);
   const [isWhite, setIsWhite] = useState<boolean>(false);
+  const [speedOfAnimation, setSpeedOfAnimation] = useState<number>(0);
 
   useEffect(() => {
     const { selectedFileName } = route.params;
@@ -26,8 +27,12 @@ export default function EffectPage({ navigation, route }: TProps) {
     setIsButtonOn(!isButtonOn);
   };
 
-  const switchingColorHandler = boolean => {
-    setIsWhite(boolean);
+  const switchingColorHandler = (ele: boolean) => {
+    setIsWhite(ele);
+  };
+
+  const changeAnimationValueHandler = (value: number) => {
+    setSpeedOfAnimation(value);
   };
 
   return (
@@ -43,12 +48,15 @@ export default function EffectPage({ navigation, route }: TProps) {
         effectName={route.params.effectName}
         isButtonOn={isButtonOn}
         isWhite={isWhite}
+        speedOfAnimation={speedOfAnimation}
       />
       <EffectBottomMenu
         effectName={route.params.effectName}
         isButtonOn={isButtonOn}
+        isWhite={isWhite}
         switchingButtonHandler={switchingButtonHandler}
         switchingColorHandler={switchingColorHandler}
+        changeAnimationValueHandler={changeAnimationValueHandler}
       />
     </View>
   );
