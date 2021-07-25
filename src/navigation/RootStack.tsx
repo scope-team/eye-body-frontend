@@ -1,25 +1,26 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import WriteStack from '@screen/WriteStack';
-import PopupStack from '@screen/PopupStack';
-import GalleryStack from '@screen/GalleryStack';
-import FAQStack from '@screen/FAQStack';
-import CameraStack from '@screen/CameraStack';
-import SettingStack from '@screen/SettingStack';
+import React, { useState } from 'react';
+import { CardStyleInterpolators, createStackNavigator } from '@react-navigation/stack';
+import GalleryStack from '@/screen/GalleryStack';
+import GalleryPage from '@/screen/GalleryPage';
+import SettingPage from '@/screen/SettingPage';
+import WriteStack from '@/screen/WriteStack';
+import PopupStack from '@/screen/PopupStack';
+import FAQStack from '@/screen/FAQStack';
+import CameraStack from '@/screen/CameraStack';
 
 type TProps = {};
 
 type TRootStackParamList = {
-  HomeStack: undefined;
   CameraStack: undefined;
+  GalleryPage: undefined;
+  SettingPage: undefined;
   GalleryStack: undefined;
   WriteStack: undefined;
   PopupStack: undefined;
   FAQStack: undefined;
-  SettingStack: undefined;
 };
 
-const RootStack = ({}: TProps) => {
+export default function RootStack({}: TProps) {
   const Stack = createStackNavigator<TRootStackParamList>();
 
   return (
@@ -27,6 +28,29 @@ const RootStack = ({}: TProps) => {
       <Stack.Screen
         name="CameraStack"
         component={CameraStack}
+        options={({ navigation }) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="GalleryPage"
+        component={GalleryPage}
+        options={({ route, navigation }) => ({
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        })}
+      />
+      <Stack.Screen
+        name="SettingPage"
+        component={SettingPage}
+        options={({ navigation }) => ({
+          headerShown: false,
+          cardStyleInterpolator: CardStyleInterpolators.forVerticalIOS,
+        })}
+      />
+      <Stack.Screen
+        name="GalleryStack"
+        component={GalleryStack}
         options={({ navigation }) => ({
           headerShown: false,
         })}
@@ -46,28 +70,12 @@ const RootStack = ({}: TProps) => {
         })}
       />
       <Stack.Screen
-        name="GalleryStack"
-        component={GalleryStack}
-        options={({ navigation }) => ({
-          headerShown: false,
-        })}
-      />
-      <Stack.Screen
         name="FAQStack"
         component={FAQStack}
         options={({ navigation }) => ({
           headerShown: false,
         })}
       />
-      <Stack.Screen
-        name="SettingStack"
-        component={SettingStack}
-        options={({ navigation }) => ({
-          headerShown: false,
-        })}
-      />
     </Stack.Navigator>
   );
-};
-
-export default RootStack;
+}

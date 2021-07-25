@@ -1,25 +1,17 @@
-/**
- * Author: Ryan
- * Date: 2021-07-04
- * title: Write
- */
-
 import React from 'react';
-import { View, Text } from 'react-native';
-import StackHeader from '@components/Header/StackHeader';
+import { View } from 'react-native';
+import Write from '@/components/Write';
+import StackHeader from '@/components/Header/StackHeader';
 
 type TProps = {
   navigation: any;
 };
 
-const Write = ({ navigation }: TProps) => {
-  const goBack = navigation.goBack;
+export default function WriteStack({ navigation }: TProps) {
   return (
     <View>
-      <StackHeader goBack={goBack} />
-      <Text>글을 쓰라</Text>
+      <StackHeader navigation={navigation} />
+      <Write navigation={navigation} />
     </View>
   );
-};
-
-export default Write;
+}

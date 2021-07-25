@@ -1,47 +1,18 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
-import StackHeader from '@components/Header/StackHeader';
+import { View } from 'react-native';
+import Gallery from '@/components/Gallery';
+import StackHeader from '@/components/Header/StackHeader';
 
 type TProps = {
+  route: any;
   navigation: any;
 };
 
-const GalleryStack = ({ navigation }: TProps) => {
-  const goBack = navigation.goBack;
-
-  const isCallStackNavigator = () => {
-    navigation.navigate('Write');
-  };
-
+export default function GalleryStack({ navigation }: TProps) {
   return (
     <View>
-      <StackHeader goBack={goBack} />
-      <View style={{ flexDirection: 'row' }}>
-        <TouchableOpacity
-          style={{
-            width: 100,
-            height: 100,
-            margin: 10,
-            backgroundColor: '#c1c1c1',
-          }}
-          onPress={isCallStackNavigator}></TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: 100,
-            height: 100,
-            margin: 10,
-            backgroundColor: '#c1c1c1',
-          }}></TouchableOpacity>
-        <TouchableOpacity
-          style={{
-            width: 100,
-            height: 100,
-            margin: 10,
-            backgroundColor: '#c1c1c1',
-          }}></TouchableOpacity>
-      </View>
+      <StackHeader navigation={navigation} />
+      <Gallery navigation={navigation} />
     </View>
   );
-};
-
-export default GalleryStack;
+}

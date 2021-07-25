@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Camera from '@/components/Camera';
 
 type TProps = {
   navigation: any;
 };
 
-export default function CameraStack({ navigation }: TProps) {
+export default function Writeindex({ navigation }: TProps) {
   return (
     <View>
-      <Camera navigation={navigation} />
+      <Text>{'testString'}</Text>
     </View>
   );
 }

@@ -5,8 +5,8 @@ type TProps = {
   navigation: any;
 };
 
-export default function StackHeader({ navigation }: TProps) {
-  const handleChangeStack = () => {
+export default function PageHeader({ navigation }: TProps) {
+  const handleCloseStack = () => {
     navigation.goBack();
   };
 
@@ -16,13 +16,15 @@ export default function StackHeader({ navigation }: TProps) {
         style={{
           position: 'absolute',
           bottom: 5,
-          left: 11,
+          right: 11,
           width: 46,
           height: 46,
         }}
-        onPress={handleChangeStack}>
+        onPress={() => {
+          handleCloseStack();
+        }}>
         <Image
-          source={require('assets/images/header/arrow_back.png')}
+          source={require('assets/images/header/arrow_close.png')}
           style={{
             width: 46,
             height: 46,
