@@ -5,11 +5,11 @@ import PhotoList from '@/components/Gallery/PhotoList';
 import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
 import useStackContext from '@/lib/context/useStackContext';
 
-type TProps = {
+export type TProps = {
   navigation: any;
 };
 
-type TImages = {
+export type TImages = {
   fileSize: number;
   filename: string;
   height: number;
@@ -18,7 +18,7 @@ type TImages = {
   width: number;
 };
 
-type TPhotos = {
+export type TPhotos = {
   group_name: string;
   image: TImages;
   location: string | null;
@@ -26,14 +26,19 @@ type TPhotos = {
   type: string;
 };
 
+export type TSelectedPhotos = {
+  filename: string;
+  uri: string;
+};
+
 export default function GalleryIndex({ navigation }: TProps) {
-  const [selectedFileName, setSelectedFileName] = useState<any[]>([]);
+  const [selectedFileName, setSelectedFileName] = useState<TSelectedPhotos[]>([]);
 
   const { GalleryStackType } = useStackContext();
 
   useEffect(() => {});
 
-  const selectedPhotoHandler = (filename: string) => {
+  const selectedPhotoHandler = ({ filename, uri }: TSelectedPhotos) => {
     let copied = selectedFileName.slice();
     const exit = copied.find(p => p.filename === filename);
     if (exit) {
@@ -45,6 +50,7 @@ export default function GalleryIndex({ navigation }: TProps) {
         ...copied,
         {
           ['filename']: filename,
+          ['uri']: uri,
         },
       ]);
     }
@@ -52,11 +58,8 @@ export default function GalleryIndex({ navigation }: TProps) {
 
   return (
     <View>
-      {!selectedFileName.length ? (
-        <Title title={GalleryStackType} navigation={navigation} />
-      ) : (
-        <EditPhotoHeader selectedFileName={selectedFileName} />
-      )}
+      <Title title={GalleryStackType} navigation={navigation} selectedFileName={selectedFileName} />
+
       <PhotoList
         navigation={navigation}
         selectedPhotoHandler={selectedPhotoHandler}
