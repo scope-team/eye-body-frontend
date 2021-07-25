@@ -40,6 +40,23 @@ export default function GalleryIndex({ navigation }: TProps) {
 
   useEffect(() => {});
 
+  const selectedPhotoHandler = (filename: string) => {
+    let copied = selectedFileName.slice();
+    const exit = copied.find(p => p.filename === filename);
+    if (exit) {
+      copied = copied.filter(p => p.filename !== filename);
+      setSelectedFileName(copied);
+      return;
+    } else {
+      setSelectedFileName([
+        ...copied,
+        {
+          ['filename']: filename,
+        },
+      ]);
+    }
+  };
+
   return (
     <View>
       {!selectedFileName.length ? (
@@ -49,7 +66,7 @@ export default function GalleryIndex({ navigation }: TProps) {
       )}
       <PhotoList
         navigation={navigation}
-        setSelectedFileName={setSelectedFileName}
+        selectedPhotoHandler={selectedPhotoHandler}
         selectedFileName={selectedFileName}
       />
     </View>

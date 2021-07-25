@@ -7,7 +7,7 @@ import useStackContext from '@/lib/context/useStackContext';
 type TProps = {
   navigation: any;
   selectedFileName?: any[];
-  setSelectedFileName?: Dispatch<React.SetStateAction<string[]>>;
+  selectedPhotoHandler?: (filename: string) => void;
 };
 
 type TImages = {
@@ -34,7 +34,7 @@ const isEffect = true;
 export default React.memo(function PhotoList({
   navigation,
   selectedFileName,
-  setSelectedFileName,
+  selectedPhotoHandler,
 }: TProps) {
   const [photoList, setPhotoList] = useState<TPhotos[]>([]);
 
@@ -57,20 +57,6 @@ export default React.memo(function PhotoList({
     // getPhotos();
   }, []);
 
-  const selectedPhotoHandler = (filename: string) => {
-    let copied = selectedFileName.slice();
-    const exit = copied.find(p => p.filename === filename);
-    if (exit) {
-      copied.filter(p => p.filename !== filename);
-    }
-    setSelectedFileName([
-      ...copied,
-      {
-        filename: 'filename',
-      },
-    ]);
-  };
-
   return (
     <View
       style={{
@@ -86,14 +72,16 @@ export default React.memo(function PhotoList({
         numColumns={3}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
-          console.log(item);
           return (
             <PhotoItem
               src={item.node.image.uri}
               filename={item.node.image.filename}
               isCallStackNavigator={isCallStackNavigator}
-              isEffect={isEffect}
-              isSelect={true}
+              isEffect={true}
+              isSelect={
+                selectedFileName &&
+                selectedFileName.find(p => p.filename === item.node.image.filename)
+              }
               selectedPhotoHandler={selectedPhotoHandler}
             />
           );
