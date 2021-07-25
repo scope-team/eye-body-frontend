@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import Colors from '@/constants/Colors';
-import Gallery from '@/components/GalleryPage';
 import StackHeader from '@/components/Header/StackHeader';
 import Layout from '@/constants/Layout';
+import Effect from '@/components/Effect';
+import SwitchEffect from '@/components/Effect/SwitchEffect';
+import EffectBottomMenu from '@/components/Effect/EffectBottomMenu';
 
 type TProps = {
   navigation: any;
@@ -11,6 +13,10 @@ type TProps = {
 };
 
 export default function EffectPage({ navigation, route }: TProps) {
+  useEffect(() => {
+    const { selectedFileName } = route.params;
+  }, []);
+
   const finishEffectHandler = () => {};
 
   return (
@@ -20,7 +26,12 @@ export default function EffectPage({ navigation, route }: TProps) {
         name={route.name}
         finishEffectHandler={finishEffectHandler}
       />
-      <Text>이펙트 페이지</Text>
+      <SwitchEffect />
+      <Effect
+        selectedFileName={route.params.selectedFileName}
+        effectName={route.params.effectName}
+      />
+      <EffectBottomMenu effectName={route.params.effectName} />
     </View>
   );
 }
