@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, FlatList, TouchableOpacity, ImageBackground } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
+import Layout, { DEFAULT_PAADING } from '@/constants/Layout';
 
 type Tprops = {
   selectedFileName: any[];
@@ -8,8 +9,16 @@ type Tprops = {
 
 export default React.memo(function EditPhotoHeader({ selectedFileName }: Tprops) {
   return (
-    <View style={{ width: '100%', height: 100, backgroundColor: '#202020' }}>
-      <View style={{ width: '100%', height: '100%' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        height: 60,
+        paddingHorizontal: 20,
+        backgroundColor: '#202020',
+      }}>
+      <View style={{ width: Layout.screen.width - DEFAULT_PAADING }}>
         <FlatList
           scrollEnabled={true}
           data={selectedFileName}
@@ -39,6 +48,9 @@ export default React.memo(function EditPhotoHeader({ selectedFileName }: Tprops)
           }}
         />
       </View>
+      <TouchableOpacity>
+        <SVGIcon icon={'check_neon'} size="46" />
+      </TouchableOpacity>
     </View>
   );
 });
