@@ -20,7 +20,9 @@ import CanclePhoto from '@/assets/icons/header/cancle_photo.svg';
 import EmptyWhiteCircle from '@/assets/icons/gallery/empty_white_circle.svg';
 import Popup from '@/assets/icons/title/popup.svg';
 import NeonCircle from '@/assets/icons/effect/neon_circle.svg';
-import BlackCircle from '@/assets/icons/effect/neon_black.svg';
+import BlackCircle from '@/assets/icons/effect/black_circle.svg';
+import PlayButton from '@/assets/icons/effect/play_btn.svg';
+import StopButton from '@/assets/icons/effect/stop_btn.svg';
 
 const icons: ObjType = {
   check_black: CheckBlack,
@@ -30,6 +32,9 @@ const icons: ObjType = {
   empty_white_circle: EmptyWhiteCircle,
   cancle_photo: CanclePhoto,
   neon_circle: NeonCircle,
+  black_circle: BlackCircle,
+  play_btn: PlayButton,
+  stop_btn: StopButton,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {

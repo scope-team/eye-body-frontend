@@ -8,7 +8,7 @@ export type TWriteStack = 'EditPhoto' | 'SelectGuidePhoto' | 'SavePhoto';
 
 type TStackContext = {
   GalleryStackType: TGalleryStack;
-  setCurrentStack: Dispatch<React.SetStateAction<TGalleryStack>>;
+  setGalleryStack: Dispatch<React.SetStateAction<TGalleryStack>>;
   PopupStackType: TPopupStack;
   setPopupStackType: Dispatch<React.SetStateAction<TPopupStack>>;
   WriteStackType: TWriteStack;

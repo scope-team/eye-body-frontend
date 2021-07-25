@@ -3,7 +3,12 @@ import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
 import RootStack from './src/navigation/RootStack';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { stackContext, TGalleryStack, TPopupStack, TWriteStack } from './src/lib/context/useStackContext';
+import {
+  stackContext,
+  TGalleryStack,
+  TPopupStack,
+  TWriteStack,
+} from './src/lib/context/useStackContext';
 import { NavigationContainer } from '@react-navigation/native';
 
 type TProps = {};
@@ -15,7 +20,7 @@ const client = new ApolloClient({
 });
 
 const App = ({}: TProps) => {
-  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('Select');
+  const [GalleryStackType, setGalleryStack] = useState<TGalleryStack>('Select');
   const [PopupStackType, setPopupStackType] = useState<TPopupStack>('SelectGuide');
   const [WriteStackType, setWriteStackType] = useState<TWriteStack>('SavePhoto');
 
@@ -23,7 +28,7 @@ const App = ({}: TProps) => {
     <ApolloProvider client={client}>
       <StatusBar barStyle="light-content" />
       <stackContext.Provider
-        value={{ GalleryStackType, setCurrentStack, PopupStackType, setPopupStackType,  WriteStackType, setWriteStackType }}>
+        value={{ GalleryStackType, setGalleryStack, PopupStackType, setPopupStackType }}>
         <NavigationContainer>
           <RootStack />
         </NavigationContainer>

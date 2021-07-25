@@ -13,3 +13,8 @@ declare module 'toggle-switch-react-native' {
   const content: any;
   export default content;
 }
+
+declare module 'react-native-snap-carousel' {
+  const content: any;
+  export default content;
+}

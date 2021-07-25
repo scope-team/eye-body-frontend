@@ -7,12 +7,14 @@ type TProps = {
   navigation: any;
 };
 
-export default function PopupIndex({ navigation }: TProps) {
-  let { PopupStackType, setCurrentStack } = useStackContext();
+const MENU: Array<TGalleryStack> = ['Compare', 'Before & After', 'Animation'];
 
-  const goToEditPhotoPage = (title: any) => {
+export default function PopupIndex({ navigation }: TProps) {
+  let { PopupStackType, setGalleryStack, GalleryStackType } = useStackContext();
+
+  const goToEditPhotoPage = (title: TGalleryStack) => {
     navigation.navigate('GalleryStack');
-    setCurrentStack(title);
+    setGalleryStack(title);
   };
 
   const render = () => {
@@ -20,7 +22,7 @@ export default function PopupIndex({ navigation }: TProps) {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>
           <Text style={{ color: 'white', fontSize: 20 }}>어떻게 편집할까요?</Text>
-          {['Compare', 'Before & After', 'Animation'].map(title => {
+          {MENU.map(title => {
             return (
               <TouchableOpacity
                 onPress={() => {
