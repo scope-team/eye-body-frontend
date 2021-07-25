@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Layout from '@/constants/Layout';
@@ -17,16 +17,13 @@ type TItem = {
 function AnimationImage({ selectedFileName, speedOfAnimation }: Tprops) {
   const slideRef = useRef<any>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  console.log(speedOfAnimation);
+
   const playAnimationHandler = () => {
     setIsPlaying(() => !isPlaying);
-    console.log(isPlaying);
     if (isPlaying) {
       slideRef.current.stopAutoplay();
-      console.log('1');
     } else {
       slideRef.current.startAutoplay();
-      console.log('2');
     }
   };
 
@@ -48,8 +45,8 @@ function AnimationImage({ selectedFileName, speedOfAnimation }: Tprops) {
       <Carousel
         ref={slideRef}
         autoplay={false}
-        autoplayDelay={1000}
-        autoplayInterval={1000}
+        autoplayDelay={1500 - Math.floor(speedOfAnimation) * 100}
+        // autoplayInterval={1500}
         data={selectedFileName}
         renderItem={renderItem}
         sliderWidth={Layout.screen.width}

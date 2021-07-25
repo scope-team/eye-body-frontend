@@ -20,11 +20,12 @@ export default function Effect({
 }: Tprops) {
   {
     const twoOfPhotoComponent = () => {
-      return selectedFileName.map((p: any) => {
+      return selectedFileName.map((p: any, index: number) => {
         const uri = p.uri;
         return (
           <>
             <Text
+              key={index}
               style={{
                 display: isButtonOn ? 'flex' : 'none',
                 position: 'absolute',

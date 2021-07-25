@@ -1,9 +1,11 @@
-import React, { useState, useEffect, Dispatch } from 'react';
+import React, { useState, useEffect } from 'react';
 import PhotoItem from '../../components/Gallery/PhotoItem';
-import { View, TouchableOpacity, FlatList } from 'react-native';
-import CameraRoll, { PhotoIdentifier } from '@react-native-community/cameraroll';
-import useStackContext from '@/lib/context/useStackContext';
+import { View, FlatList, Text } from 'react-native';
+import CameraRoll from '@react-native-community/cameraroll';
+import tw from 'styles/tailwind';
 import { TSelectedPhotos } from '@/components/Gallery';
+import { dateFormatter } from '@/lib/date';
+import { TEdge, TGetPhotoRes, TInnerEdge } from '@/lib/models/photo';
 
 type TProps = {
   navigation: any;
@@ -12,34 +14,14 @@ type TProps = {
   selectedPhotoHandler?: ({ filename, uri }: TSelectedPhotos) => void;
 };
 
-type TImages = {
-  fileSize: number;
-  filename: string;
-  height: number;
-  playableDuration: number | null;
-  uri: string;
-  width: number;
-};
-
-type TPhotos = {
-  node: {
-    group_name: string;
-    image: TImages;
-    location: string | null;
-    timestamp: number;
-    type: string;
-  };
-};
-
-const isEffect = true;
-
 export default React.memo(function PhotoList({
   navigation,
   name,
   selectedFileName,
   selectedPhotoHandler,
 }: TProps) {
-  const [photoList, setPhotoList] = useState<PhotoIdentifier[]>([]);
+  const [photoList, setPhotoList] = useState<TEdge>([]);
+  const [monthsList, setMonthList] = useState<string[]>(['2021. 05']);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -48,9 +30,22 @@ export default React.memo(function PhotoList({
   const getPhotos = async () => {
     try {
       const { edges } = await CameraRoll.getPhotos({
-        first: 10,
+        first: 40,
       });
-      setPhotoList(edges);
+      const formatArrayForDate = edges.map((item, index) => {
+        let createdAt: string = dateFormatter(item.node.timestamp);
+        const exist = monthsList.includes(createdAt);
+
+        if (!exist) {
+          setMonthList([...monthsList, createdAt]);
+        }
+        if (index === 4) {
+          createdAt = '2021. 05';
+        }
+        return { ...item, createdAt };
+      });
+
+      setPhotoList(formatArrayForDate);
     } catch (error) {
       console.log('getPhoto', error);
     }
@@ -62,34 +57,94 @@ export default React.memo(function PhotoList({
 
   return (
     <View
-      style={{
-        height: '100%',
-        backgroundColor: '#202020',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+      style={tw`h-full gray_20`}
+      // style={{
+      //   height: '100%',
+      //   backgroundColor: '#202020',
+      //   justifyContent: 'center',
+      //   alignItems: 'center',
+      //   paddingBottom: 200,
+      // }}
+    >
       <FlatList
-        scrollEnabled={false}
-        data={photoList}
+        scrollEnabled={true}
+        data={monthsList}
         horizontal={false}
-        numColumns={3}
         keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => {
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item: month }) => {
           return (
-            <PhotoItem
-              uri={item.node.image.uri}
-              filename={item.node.image.filename ?? ''}
-              isCallStackNavigator={isCallStackNavigator}
-              isEffect={name !== 'GalleryPage' ? true : false}
-              isSelect={
-                selectedFileName &&
-                selectedFileName.find(p => p.filename === item.node.image.filename)
-              }
-              selectedPhotoHandler={selectedPhotoHandler}
-            />
+            <View style={{ marginBottom: 20 }}>
+              <Text style={{ color: 'white', paddingLeft: 5, marginBottom: 5 }}>{month}</Text>
+              <FlatList
+                scrollEnabled={true}
+                data={photoList}
+                horizontal={false}
+                numColumns={3}
+                keyExtractor={(_, index) => index.toString()}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item }) => {
+                  return (
+                    <View
+                      style={{
+                        display: item.createdAt === month ? 'flex' : 'none',
+                      }}>
+                      <PhotoItem
+                        uri={item.node.image.uri}
+                        filename={item.node.image.filename ?? ''}
+                        isCallStackNavigator={isCallStackNavigator}
+                        isEffect={name !== 'GalleryPage' ? true : false}
+                        isSelect={
+                          selectedFileName &&
+                          selectedFileName.find(p => p.filename === item.node.image.filename)
+                        }
+                        selectedPhotoHandler={selectedPhotoHandler}
+                      />
+                    </View>
+                  );
+                }}
+              />
+            </View>
           );
         }}
       />
+
+      {/* {monthsList.map((month, index) => {
+        return (
+          <View style={{ height: '100%' }}>
+            <Text>{month}</Text>
+            <FlatList
+              scrollEnabled={true}
+              data={photoList}
+              horizontal={false}
+              numColumns={3}
+              keyExtractor={(_, index) => index.toString()}
+              renderItem={({ item }) => {
+                console.log(item);
+                return (
+                  <View
+                    style={{
+                      display: item.createdAt === month ? 'flex' : 'none',
+                    }}>
+                    <PhotoItem
+                      uri={item.node.image.uri}
+                      filename={item.node.image.filename ?? ''}
+                      timestamp={item.node.timestamp}
+                      isCallStackNavigator={isCallStackNavigator}
+                      isEffect={name !== 'GalleryPage' ? true : false}
+                      isSelect={
+                        selectedFileName &&
+                        selectedFileName.find(p => p.filename === item.node.image.filename)
+                      }
+                      selectedPhotoHandler={selectedPhotoHandler}
+                    />
+                  </View>
+                );
+              }}
+            />
+          </View>
+        );
+      })} */}
     </View>
   );
 });
