@@ -11,7 +11,7 @@ export default function PopupIndex({ navigation }: TProps) {
   let { PopupStackType, setCurrentStack } = useStackContext();
 
   const goToEditPhotoPage = (title: string) => {
-    navigation.navigate('GalleryStack');
+    navigation.navigate('GalleryStack', { title });
     setCurrentStack(title);
   };
 

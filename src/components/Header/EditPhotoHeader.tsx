@@ -47,7 +47,7 @@ export default React.memo(function EditPhotoHeader({
                   }}
                 />
                 <TouchableOpacity
-                  style={{ position: 'absolute', right: -3 }}
+                  style={{ position: 'absolute', right: -3, top: 0 }}
                   onPress={() => {
                     canclePhotoHandler(item.filename);
                   }}>
