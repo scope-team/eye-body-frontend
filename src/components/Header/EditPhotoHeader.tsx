@@ -17,12 +17,16 @@ export default React.memo(function EditPhotoHeader({
       style={{
         flexDirection: 'row',
         justifyContent: 'space-between',
-        width: '100%',
-        height: 60,
+        width: Layout.screen.width,
         paddingHorizontal: 20,
         backgroundColor: '#202020',
       }}>
-      <View style={{ width: Layout.screen.width - DEFAULT_PAADING }}>
+      <View
+        style={{
+          width: Layout.screen.width,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
         <FlatList
           scrollEnabled={true}
           data={selectedFileName}
@@ -37,6 +41,7 @@ export default React.memo(function EditPhotoHeader({
                   height: 50,
                   zIndex: 10,
                   marginHorizontal: 5,
+                  marginBottom: 10,
                 }}>
                 <ImageBackground
                   source={{ uri }}
@@ -57,10 +62,10 @@ export default React.memo(function EditPhotoHeader({
             );
           }}
         />
+        <TouchableOpacity>
+          <SVGIcon icon={'check_neon'} size="46" style={{ marginRight: 50 }} />
+        </TouchableOpacity>
       </View>
-      <TouchableOpacity>
-        <SVGIcon icon={'check_neon'} size="46" />
-      </TouchableOpacity>
     </View>
   );
 });

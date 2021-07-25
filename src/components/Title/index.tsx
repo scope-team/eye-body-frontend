@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
 import useStackContext from '@/lib/context/useStackContext';
 
-
 type TProps = {
   title: string;
   navigation: any;
@@ -12,19 +11,21 @@ type TProps = {
 export default function Titleindex({ title, navigation }: TProps) {
   const { setPopupStackType } = useStackContext();
 
-
   const handleChangeStack = () => {
     navigation.navigate('PopupStack');
     setPopupStackType('EditPhoto');
   };
 
   const renderTitle = () => {
-    console.log(title);
     return (
       <>
-        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+        <View
+          style={{
+            flexDirection: 'row',
+          }}>
           <Text style={{ color: 'white', fontSize: 34, fontWeight: '800' }}>{title}</Text>
         </View>
+
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
             <SVGIcon icon="popup" size="46" />
