@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import Title from '@/components/Title';
 import PhotoList from '@/components/Gallery/PhotoList';
 import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
 import useStackContext from '@/lib/context/useStackContext';
+import Colors from '@/constants/Colors';
 
 export type TProps = {
   navigation: any;
+  route: any;
 };
 
 export type TImages = {
@@ -31,12 +33,14 @@ export type TSelectedPhotos = {
   uri: string;
 };
 
-export default function GalleryIndex({ navigation }: TProps) {
+export default function GalleryIndex({ navigation, route }: TProps) {
   const [selectedFileName, setSelectedFileName] = useState<TSelectedPhotos[]>([]);
 
   const { GalleryStackType } = useStackContext();
 
-  useEffect(() => {});
+  useEffect(() => {
+    console.log(GalleryStackType);
+  });
 
   const selectedPhotoHandler = ({ filename, uri }: TSelectedPhotos) => {
     let copied = selectedFileName.slice();
@@ -63,7 +67,7 @@ export default function GalleryIndex({ navigation }: TProps) {
   };
 
   return (
-    <View>
+    <View style={{}}>
       {!selectedFileName.length ? (
         <Title title={GalleryStackType} navigation={navigation} />
       ) : (
@@ -72,7 +76,19 @@ export default function GalleryIndex({ navigation }: TProps) {
           canclePhotoHandler={canclePhotoHandler}
         />
       )}
-
+      <View
+        style={{
+          width: '100%',
+          paddingHorizontal: 30,
+          backgroundColor: Colors.backgroundColor,
+          paddingBottom: 30,
+        }}>
+        <Text style={{ color: Colors.mainColor }}>
+          {GalleryStackType === 'Animation'
+            ? '사진을 3장 이상 선택해주세요'
+            : '사진을 2장 선택해주세요.'}
+        </Text>
+      </View>
       <PhotoList
         navigation={navigation}
         selectedPhotoHandler={selectedPhotoHandler}
