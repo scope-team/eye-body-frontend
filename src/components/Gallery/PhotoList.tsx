@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Dispatch } from 'react';
 import PhotoItem from '../../components/Gallery/PhotoItem';
 import { View, TouchableOpacity, FlatList } from 'react-native';
-import CameraRoll from '@react-native-community/cameraroll';
+import CameraRoll, { PhotoIdentifier } from '@react-native-community/cameraroll';
 import useStackContext from '@/lib/context/useStackContext';
 import { TSelectedPhotos } from '@/components/Gallery';
 
@@ -39,7 +39,7 @@ export default React.memo(function PhotoList({
   selectedFileName,
   selectedPhotoHandler,
 }: TProps) {
-  const [photoList, setPhotoList] = useState<TPhotos[]>([]);
+  const [photoList, setPhotoList] = useState<PhotoIdentifier[]>([]);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -78,7 +78,7 @@ export default React.memo(function PhotoList({
           return (
             <PhotoItem
               uri={item.node.image.uri}
-              filename={item.node.image.filename}
+              filename={item.node.image.filename ?? ''}
               isCallStackNavigator={isCallStackNavigator}
               isEffect={name !== 'GalleryPage' ? true : false}
               isSelect={

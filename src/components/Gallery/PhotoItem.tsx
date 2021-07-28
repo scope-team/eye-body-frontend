@@ -38,8 +38,8 @@ export default React.memo(function PhotoItem({
               right: 5,
               zIndex: 10,
             }}>
-            <TouchableOpacity onPress={() => selectedPhotoHandler({ filename, uri })}>
-              <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
+            <TouchableOpacity onPress={() => selectedPhotoHandler && selectedPhotoHandler({ filename, uri })}>
+              {/* <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" /> */}
             </TouchableOpacity>
           </View>
         ) : null}

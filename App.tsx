@@ -15,8 +15,8 @@ const client = new ApolloClient({
 });
 
 const App = ({}: TProps) => {
-  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('');
-  const [PopupStackType, setPopupStackType] = useState<TPopupStack>('');
+  const [GalleryStackType, setCurrentStack] = useState<TGalleryStack>('Select');
+  const [PopupStackType, setPopupStackType] = useState<TPopupStack>('SelectGuide');
 
   return (
     <ApolloProvider client={client}>

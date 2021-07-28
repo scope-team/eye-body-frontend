@@ -28,7 +28,7 @@ export default function Titleindex({ title, navigation }: TProps) {
 
         {title === 'Gallery' ? (
           <TouchableOpacity onPress={handleChangeStack}>
-            <SVGIcon icon="popup" size="46" />
+            {/* <SVGIcon icon="popup" size="46" /> */}
           </TouchableOpacity>
         ) : (
           <SVGIcon icon={'check_black'} size="46" />

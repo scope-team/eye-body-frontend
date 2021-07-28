@@ -12,7 +12,13 @@ module.exports = {
       gray_ba: '#bababa',
       gray_2f: '#2F2F2F',
       gray_20: '#202020',
+      black: '#000000',
     },
+    gradientColorStops: theme => ({
+      ...theme('colors'),
+      primary: '#C1FB50',
+      secondary: '#77FEA9',
+    }),
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
       serif: ['Merriweather', 'serif'],
@@ -56,6 +62,9 @@ module.exports = {
       borderRadius: {
         4: '4px',
       },
+      backgroundImage: theme => ({
+        popup: "url('/assets/images/title/popup.png')",
+      }),
     },
   },
   variants: {
