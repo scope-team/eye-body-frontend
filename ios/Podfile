@@ -16,6 +16,10 @@ target 'eyebody' do
     :hermes_enabled => false
   )
 
+  # Third party deps podspec link
+  pod 'react-native-camera', path: '../node_modules/react-native-camera'
+
+
   target 'eyebodyTests' do
     inherit! :complete
     # Pods for testing

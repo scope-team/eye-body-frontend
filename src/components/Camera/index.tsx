@@ -1,57 +1,42 @@
-import React, { useEffect } from 'react';
-import { View, Alert, ToastAndroid } from 'react-native';
-import { RNCamera } from 'react-native-camera';
+import React, { useRef } from 'react';
+import { Text, View } from 'react-native';
+import { RNCamera, TakePictureResponse } from 'react-native-camera';
+import tailwind from 'tailwind-rn';
 import CameraRoll from '@react-native-community/cameraroll';
-import { PERMISSIONS, RESULTS, request } from 'react-native-permissions';
-import BottomTab from '../../components/Camera/BottomTab';
+import BottomTab from '@components/Camera/BottomTab';
 
 type TProps = {
   navigation: any;
 };
 
+const PendingView = () => (
+  <View style={tailwind('flex-1 justify-center items-center')}>
+    <Text>Waiting</Text>
+  </View>
+);
+
 export default function CameraIndex({ navigation }: TProps) {
-  const cameraRef = React.useRef<any>();
-
-  useEffect(() => {
-    askPermission();
-  }, []);
-
-  const askPermission = async () => {
-    try {
-      const result = await request(PERMISSIONS.IOS.PHOTO_LIBRARY);
-      if (result === RESULTS.GRANTED) {
-      }
-    } catch (error) {
-      console.log('askPermission', error);
-    }
-  };
+  const cameraRef = useRef<RNCamera>();
 
   const takePhoto = async () => {
-    if (cameraRef.current) {
-      const data = await cameraRef.current.takePictureAsync({
+    if (cameraRef && cameraRef.current) {
+      const data: TakePictureResponse = await cameraRef.current.takePictureAsync({
         quality: 1,
         exif: true,
       });
-      if (data) {
-        console.log(data);
-        const result = await CameraRoll.save(data.uri);
-        console.log(result);
-        Alert.alert('Picture Taken!', data.uri);
+
+      if (data.uri) {
+        const [result, error] = await CameraRoll.save(data.uri);
+        if (error) console.log(error);
+        result && navigation.push('WriteStack', { picture: data.uri });
       }
     }
   };
 
   return (
-    <View
-      style={{
-        position: 'relative',
-        width: '100%',
-        height: '100%',
-        backgroundColor: '#303030',
-      }}>
+    <View style={tailwind('relative w-full h-full bg-white')}>
       <RNCamera
-        ref={cameraRef}
-        style={{ width: '100%', height: '100%' }}
+        style={tailwind('w-full h-full')}
         type={RNCamera.Constants.Type.back}
         captureAudio={false}
         androidCameraPermissionOptions={{
@@ -60,7 +45,17 @@ export default function CameraIndex({ navigation }: TProps) {
           buttonPositive: 'Ok',
           buttonNegative: 'Cancel',
         }}
-      />
+        androidRecordAudioPermissionOptions={{
+          title: 'Permission to use audio recording',
+          message: 'We need your permission to use your audio',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}>
+        {({ camera, status }) => {
+          if (status !== 'READY') return <PendingView />;
+          cameraRef.current = camera;
+        }}
+      </RNCamera>
       <BottomTab navigation={navigation} takePhoto={takePhoto} />
     </View>
   );
