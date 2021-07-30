@@ -7,6 +7,7 @@ import WriteStack from '@/screen/WriteStack';
 import PopupStack from '@/screen/PopupStack';
 import FAQStack from '@/screen/FAQStack';
 import CameraStack from '@/screen/CameraStack';
+import EffectPage from '@/screen/EffectPage';
 
 type TProps = {};
 
@@ -72,6 +73,13 @@ export default function RootStack({}: TProps) {
       <Stack.Screen
         name="FAQStack"
         component={FAQStack}
+        options={({ navigation }) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="EffectPage"
+        component={EffectPage}
         options={({ navigation }) => ({
           headerShown: false,
         })}

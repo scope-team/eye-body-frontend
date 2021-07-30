@@ -7,6 +7,8 @@ const HEIGHT = Dimensions.get('window').height;
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
+export const DEFAULT_PAADING = 80;
+
 const Layout = {
   window: {
     width: WIDTH,

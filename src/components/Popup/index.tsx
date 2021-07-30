@@ -1,7 +1,7 @@
 import useStackContext from '../../lib/context/useStackContext';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Title from '../../components/Title';
+import Title from '@/components/Title';
 
 type TProps = {
   navigation: any;

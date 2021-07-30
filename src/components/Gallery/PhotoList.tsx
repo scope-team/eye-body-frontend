@@ -7,6 +7,7 @@ import { TSelectedPhotos } from '@/components/Gallery';
 
 type TProps = {
   navigation: any;
+  name?: string;
   selectedFileName?: any[];
   selectedPhotoHandler?: ({ filename, uri }: TSelectedPhotos) => void;
 };
@@ -34,6 +35,7 @@ const isEffect = true;
 
 export default React.memo(function PhotoList({
   navigation,
+  name,
   selectedFileName,
   selectedPhotoHandler,
 }: TProps) {
@@ -78,7 +80,7 @@ export default React.memo(function PhotoList({
               uri={item.node.image.uri}
               filename={item.node.image.filename}
               isCallStackNavigator={isCallStackNavigator}
-              isEffect={true}
+              isEffect={name !== 'GalleryPage' ? true : false}
               isSelect={
                 selectedFileName &&
                 selectedFileName.find(p => p.filename === item.node.image.filename)
