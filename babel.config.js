@@ -22,6 +22,8 @@ module.exports = {
           '@navigation': './src/navigation',
           '@screen': './src/screen',
           '@lib': './src/lib',
+          '@contants': './src/constants',
+          '@assets': './src/assets',
         },
       },
     ],

@@ -2,9 +2,9 @@ import React from 'react';
 
 interface Iprops {
   icon: string;
-  size: string;
-  width?: string;
-  height?: string;
+  size: string | number;
+  width?: string | number;
+  height?: string | number;
   style?: object;
   stroke?: string;
 }
@@ -19,6 +19,8 @@ import CheckComplete from '@/assets/icons/gallery/check_complete.svg';
 import CanclePhoto from '@/assets/icons/header/cancle_photo.svg';
 import EmptyWhiteCircle from '@/assets/icons/gallery/empty_white_circle.svg';
 import Popup from '@/assets/icons/title/popup.svg';
+import NeonCircle from '@/assets/icons/effect/neon_circle.svg';
+import BlackCircle from '@/assets/icons/effect/neon_black.svg';
 
 const icons: ObjType = {
   check_black: CheckBlack,
@@ -27,6 +29,7 @@ const icons: ObjType = {
   popup: Popup,
   empty_white_circle: EmptyWhiteCircle,
   cancle_photo: CanclePhoto,
+  neon_circle: NeonCircle,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {
@@ -34,7 +37,6 @@ const SVGIcon = ({ icon, size, width, height, style, stroke }: Iprops) => {
   if (Icon) {
     return <Icon width={width || size} height={height || size} style={style} stroke={stroke} />;
   }
-
   return null;
 };
 
