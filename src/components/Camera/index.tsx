@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Text, View } from 'react-native';
 import { RNCamera, TakePictureResponse } from 'react-native-camera';
-import tailwind from 'tailwind-rn';
+import tw from 'styles/tailwind';
 import CameraRoll from '@react-native-community/cameraroll';
 import BottomTab from '@components/Camera/BottomTab';
 
@@ -10,7 +10,7 @@ type TProps = {
 };
 
 const PendingView = () => (
-  <View style={tailwind('flex-1 justify-center items-center')}>
+  <View style={tw`flex-1 justify-center items-center`}>
     <Text>Waiting</Text>
   </View>
 );
@@ -23,20 +23,21 @@ export default function CameraIndex({ navigation }: TProps) {
       const data: TakePictureResponse = await cameraRef.current.takePictureAsync({
         quality: 1,
         exif: true,
+        base64: true,
       });
 
       if (data.uri) {
         const [result, error] = await CameraRoll.save(data.uri);
         if (error) console.log(error);
-        result && navigation.push('WriteStack', { picture: data.uri });
+        result && navigation.push('WriteStack', { picture: data });
       }
     }
   };
 
   return (
-    <View style={tailwind('relative w-full h-full bg-white')}>
+    <View style={tw`relative w-full h-full bg-white`}>
       <RNCamera
-        style={tailwind('w-full h-full')}
+        style={tw`w-full h-full`}
         type={RNCamera.Constants.Type.back}
         captureAudio={false}
         androidCameraPermissionOptions={{

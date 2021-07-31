@@ -4,11 +4,15 @@ export type TGalleryStack = 'Select' | 'Compare' | 'Before & After' | 'Animation
 
 export type TPopupStack = 'EditPhoto' | 'SelectGuide';
 
+export type TWriteStack = 'EditPhoto' | 'SelectGuidePhoto' | 'SavePhoto';
+
 type TStackContext = {
   GalleryStackType: TGalleryStack;
   setCurrentStack: Dispatch<React.SetStateAction<TGalleryStack>>;
   PopupStackType: TPopupStack;
   setPopupStackType: Dispatch<React.SetStateAction<TPopupStack>>;
+  WriteStackType: TWriteStack;
+  setWriteStackType: Dispatch<React.SetStateAction<TWriteStack>>;
 };
 
 export const stackContext = createContext<TStackContext | null>(null);
