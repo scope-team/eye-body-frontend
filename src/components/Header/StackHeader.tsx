@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
+import useStackContext from '@/lib/context/useStackContext';
 
 const arrowBack = require('assets/images/header/arrow_back.png');
 
@@ -14,6 +15,9 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
   const handleChangeStack = () => {
     navigation.goBack();
   };
+
+  const { WriteStackType } = useStackContext();
+
   const renderHeader = () => {
     return (
       <SafeAreaView
@@ -34,6 +38,11 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
         </TouchableOpacity>
         {name === 'EffectPage' ? (
           <TouchableOpacity onPress={finishEffectHandler}>
+            <SVGIcon icon="check_neon" size="46" />
+          </TouchableOpacity>
+        ) : null}
+        {WriteStackType === 'SavePhoto' ? (
+          <TouchableOpacity onPress={() => navigation.navigate('GalleryPage')}>
             <SVGIcon icon="check_neon" size="46" />
           </TouchableOpacity>
         ) : null}

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import tailwind from 'tailwind-rn';
+import tw from 'styles/tailwind';
 
 const buttonToTakePictures = require('assets/icons/camera/buttonToTakePictures.svg');
 
@@ -22,21 +22,14 @@ export default function BottomTab({ navigation, takePhoto }: TProps) {
 
   return (
     <View
-      style={tailwind(
-        'absolute bottom-0 flex-row justify-between items-center w-full h-1/6 p-7 bg-black',
-      )}>
-      <Text style={tailwind('text-white')} onPress={() => handleChangeStack('GalleryPage')}>
+      style={tw`absolute bottom-0 flex-row justify-between items-center w-full h-1/6 p-7 bg-black`}>
+      <Text style={tw`text-white`} onPress={() => handleChangeStack('GalleryPage')}>
         앨범
       </Text>
       <TouchableOpacity onPress={takePhoto}>
-        <Image
-          source={buttonToTakePictures}
-          style={tailwind(
-            'w-9 h-1/3 bg-white',
-          )}
-        />
+        <Image source={buttonToTakePictures} style={tw`w-9 h-1/3 bg-white`} />
       </TouchableOpacity>
-      <Text style={tailwind('text-white')} onPress={() => handleChangeStack('SettingPage')}>
+      <Text style={tw`text-white`} onPress={() => handleChangeStack('SettingPage')}>
         세팅
       </Text>
     </View>
