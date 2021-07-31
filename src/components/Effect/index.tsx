@@ -5,9 +5,11 @@ import Layout from '@/constants/Layout';
 type Tprops = {
   selectedFileName: any;
   effectName: string;
+  isButtonOn: boolean;
+  isWhite: boolean;
 };
 
-export default function Effect({ selectedFileName, effectName }: Tprops) {
+export default function Effect({ selectedFileName, effectName, isButtonOn, isWhite }: Tprops) {
   {
     return (
       <View style={{ flexDirection: 'row', width: Layout.screen.width }}>
@@ -18,10 +20,11 @@ export default function Effect({ selectedFileName, effectName }: Tprops) {
               {effectName === 'Before & After' ? (
                 <Text
                   style={{
+                    display: isButtonOn ? 'flex' : 'none',
                     position: 'absolute',
                     top: 0,
                     left: Layout.screen.width / 2 - 70,
-                    color: 'white',
+                    color: isWhite ? 'white' : 'black',
                     zIndex: 1,
                     fontSize: 20,
                   }}>

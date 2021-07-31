@@ -17,9 +17,10 @@
       "@components/*": ["components/*"],
       "@navigation/*": ["navigation/*"],
       "@screen/*": ["screen/*"],
-      "@lib/*": ["lib/*"]
-    },
-    "noImplicitAny": false
+      "@lib/*": ["lib/*"],
+      "@constants": ["constants/*"],
+      "@assets": ["assets/*"]
+    }
   },
   "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"],
   "include": ["**/*.ts", "**/*.js"]
