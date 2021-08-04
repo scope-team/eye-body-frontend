@@ -5448,6 +5448,13 @@
     "borderBottomColor": "rgba(32, 32, 32, var(--tw-border-opacity))",
     "borderLeftColor": "rgba(32, 32, 32, var(--tw-border-opacity))"
   },
+  "border-gray_39": {
+    "--tw-border-opacity": 1,
+    "borderTopColor": "#393939",
+    "borderRightColor": "#393939",
+    "borderBottomColor": "#393939",
+    "borderLeftColor": "#393939"
+  },
   "border-black": {
     "--tw-border-opacity": 1,
     "borderTopColor": "rgba(0, 0, 0, var(--tw-border-opacity))",
@@ -5522,6 +5529,10 @@
   "bg-gray_20": {
     "--tw-bg-opacity": 1,
     "backgroundColor": "rgba(32, 32, 32, var(--tw-bg-opacity))"
+  },
+  "bg-gray_39": {
+    "--tw-bg-opacity": 1,
+    "backgroundColor": "#393939"
   },
   "bg-black": {
     "--tw-bg-opacity": 1,

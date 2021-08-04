@@ -19,6 +19,7 @@ type TRootStackParamList = {
   WriteStack: undefined;
   PopupStack: undefined;
   FAQStack: undefined;
+  EffectPage: undefined;
 };
 
 export default function RootStack({}: TProps) {

@@ -4,6 +4,7 @@ import { RNCamera, TakePictureResponse } from 'react-native-camera';
 import tw from 'styles/tailwind';
 import CameraRoll from '@react-native-community/cameraroll';
 import BottomTab from '@components/Camera/BottomTab';
+import useCameraContext from '@/lib/context/useCameraContext';
 
 type TProps = {
   navigation: any;
@@ -16,14 +17,16 @@ const PendingView = () => (
 );
 
 export default function CameraIndex({ navigation }: TProps) {
+  const { mirrorImage, quality, guideImage } = useCameraContext();
   const cameraRef = useRef<RNCamera>();
 
   const takePhoto = async () => {
     if (cameraRef && cameraRef.current) {
       const data: TakePictureResponse = await cameraRef.current.takePictureAsync({
-        quality: 1,
+        quality: quality ? 1 : 0.5,
         exif: true,
         base64: true,
+        mirrorImage,
       });
 
       if (data.uri) {
