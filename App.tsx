@@ -10,8 +10,15 @@ import {
   TWriteStack,
 } from './src/lib/context/useStackContext';
 import { NavigationContainer } from '@react-navigation/native';
+import { cameraContext } from '@/lib/context/useCameraContext';
+import { useRef } from 'react';
 
 type TProps = {};
+
+export type TGuideImage = {
+  isGuideImage: boolean;
+  guideImage: string | null;
+};
 
 // Initialize Apollo Client
 const client = new ApolloClient({
@@ -23,15 +30,38 @@ const App = ({}: TProps) => {
   const [GalleryStackType, setGalleryStack] = useState<TGalleryStack>('Select');
   const [PopupStackType, setPopupStackType] = useState<TPopupStack>('SelectGuide');
   const [WriteStackType, setWriteStackType] = useState<TWriteStack>('SavePhoto');
+  const [mirrorImage, setMirrorImage] = useState(false);
+  const [guideImage, setGuideImage] = useState<TGuideImage>({
+    isGuideImage: false,
+    guideImage: null,
+  });
+  const [quality, setQuality] = useState(true);
 
   return (
     <ApolloProvider client={client}>
       <StatusBar barStyle="light-content" />
       <stackContext.Provider
-        value={{ GalleryStackType, setGalleryStack, PopupStackType, setPopupStackType }}>
-        <NavigationContainer>
-          <RootStack />
-        </NavigationContainer>
+        value={{
+          GalleryStackType,
+          setGalleryStack,
+          PopupStackType,
+          setPopupStackType,
+          WriteStackType,
+          setWriteStackType,
+        }}>
+        <cameraContext.Provider
+          value={{
+            mirrorImage,
+            setMirrorImage,
+            guideImage,
+            setGuideImage,
+            quality,
+            setQuality,
+          }}>
+          <NavigationContainer>
+            <RootStack />
+          </NavigationContainer>
+        </cameraContext.Provider>
       </stackContext.Provider>
     </ApolloProvider>
   );
