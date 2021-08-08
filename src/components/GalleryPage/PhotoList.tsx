@@ -42,7 +42,6 @@ export default React.memo(function PhotoPageList({
   selectedPhotoHandler,
 }: TProps) {
   const [photoList, setPhotoList] = useState<PhotoIdentifier[]>([]);
-  console.log(photoList[0].node.timestamp);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -64,7 +63,7 @@ export default React.memo(function PhotoPageList({
   }, []);
 
   return (
-    <View style={tw`h-full bg-gray_20 justify-center items-center `}>
+    <View style={tw`justify-center items-center h-full px-8 bg-gray_20`}>
       <FlatList
         numColumns={3}
         data={photoList}

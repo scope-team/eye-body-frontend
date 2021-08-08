@@ -19,6 +19,7 @@
     "react-native": "0.64.1",
     "react-native-camera": "^4.0.0",
     "react-native-camera-roll-picker": "^2.0.0",
+    "react-native-gl-image-filters": "^0.4.0",
     "react-native-permissions": "^3.0.5",
     "react-native-safe-area": "^0.5.1",
     "react-native-snap-carousel": "^3.9.1",
