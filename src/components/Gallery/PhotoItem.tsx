@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
-import Layout from '@/constants/Layout';
 import SVGIcon from '@/lib/svg/SVGIcon';
 import { TSelectedPhotos } from '@/components/Gallery';
 
@@ -22,12 +21,11 @@ export default React.memo(function PhotoItem({
   isSelect,
 }: Tprop) {
   return (
-    <View>
+    <View style={{ margin: 5 }}>
       <View
         style={{
           width: 100,
           height: 150,
-          margin: 10,
           backgroundColor: '#c1c1c1',
         }}>
         {isEffect ? (

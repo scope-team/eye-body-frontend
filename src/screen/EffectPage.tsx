@@ -42,7 +42,7 @@ export default function EffectPage({ navigation, route }: TProps) {
         name={route.name}
         finishEffectHandler={finishEffectHandler}
       />
-      <SwitchEffect />
+      <SwitchEffect effectName={route.params.effectName} />
       <Effect
         selectedFileName={route.params.selectedFileName}
         effectName={route.params.effectName}

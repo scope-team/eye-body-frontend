@@ -15,30 +15,32 @@ export type TGetPhotoRes = {
       node: TNode;
     },
   ];
-  page_info: TPageInfo;
+  page_info?: TPageInfo;
+};
+
+export type TEdge = Array<TInnerEdge>;
+
+export type TInnerEdge = {
+  node: TNode;
+  createdAt?: string;
 };
 
 // get result의 Node 키 타입
 export type TNode = {
   type: string;
   group_name: string;
-  image: Array<TImage>;
+  image: TImage;
   timestamp: number;
-  location: Array<object> | null;
+  location: any | null;
 };
 export type TImage = {
-  url: string;
+  uri: string;
   height: number;
   width: number;
-  isStored: boolean;
-  playableDuration: number;
-};
-export type TLocation = {
-  latitude: number;
-  longitude: number;
-  altitude: number;
-  heading: number;
-  speed: number;
+  isStored?: boolean;
+  playableDuration: number | null;
+  filename: string | null;
+  fileSize: number | null;
 };
 
 // get result의 page_info 키 타입
