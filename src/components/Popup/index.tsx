@@ -1,13 +1,13 @@
-import useStackContext, { TGalleryStack } from '../../lib/context/useStackContext';
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import useStackContext, { TGalleryStack } from '@/lib/context/useStackContext';
 import Title from '@/components/Title';
 
 type TProps = {
   navigation: any;
 };
 
-const MENU: Array<TGalleryStack> = ['Compare', 'Before & After', 'Animation'];
+const MENU: TGalleryStack[] = ['Compare', 'Before & After', 'Animation'];
 
 export default function PopupIndex({ navigation }: TProps) {
   let { PopupStackType, setGalleryStack, GalleryStackType } = useStackContext();
@@ -35,7 +35,8 @@ export default function PopupIndex({ navigation }: TProps) {
           })}
         </View>
       );
-    } else if (PopupStackType === 'SelectGuide') {
+    } 
+    if (PopupStackType === 'SelectGuide') {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>
           <Text style={{ color: 'white', fontSize: 20 }}>가이드 사진을 어디서 가져올까요?</Text>

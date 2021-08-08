@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Text, View } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
 import { RNCamera, TakePictureResponse } from 'react-native-camera';
 import tw from 'styles/tailwind';
 import CameraRoll from '@react-native-community/cameraroll';
@@ -60,6 +60,7 @@ export default function CameraIndex({ navigation }: TProps) {
           cameraRef.current = camera;
         }}
       </RNCamera>
+      {/* <ImageBackground style={tw`w-full h-full bg-opacity-70`} source={{ uri: guideImage }} resizeMode="cover" /> */}
       <BottomTab navigation={navigation} takePhoto={takePhoto} />
     </View>
   );

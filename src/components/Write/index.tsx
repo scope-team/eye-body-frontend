@@ -20,7 +20,8 @@ export default function Writeindex({ navigation, picture }: TProps) {
           style={tw`w-full h-full leading-10 bg-gray_20 px-10 py-4 text-white`}
           multiline
           placeholderTextColor="white"
-          placeholder="메모를 입력하세요👀"></TextInput>
+          placeholder="메모를 입력하세요👀"
+        />
       </View>
     </View>
   );
