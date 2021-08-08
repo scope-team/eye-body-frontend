@@ -1,13 +1,13 @@
-import React, { useState, useEffect, Dispatch } from 'react';
-import PhotoItem from '../../components/Gallery/PhotoItem';
-import { View, TouchableOpacity, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, FlatList } from 'react-native';
+import tw from '@/styles/tailwind';
 import CameraRoll, { PhotoIdentifier } from '@react-native-community/cameraroll';
-import useStackContext from '@/lib/context/useStackContext';
-// import useStackContext from '@/lib/context/useStackContext';
+import PhotoItem from '@/components/GalleryPage/PhotoItem';
 import { TSelectedPhotos } from '@/components/Gallery';
 
 type TProps = {
   navigation: any;
+  route: any;
   name?: string;
   selectedFileName?: any[];
   selectedPhotoHandler?: ({ filename, uri }: TSelectedPhotos) => void;
@@ -36,11 +36,13 @@ const isEffect = true;
 
 export default React.memo(function PhotoPageList({
   navigation,
+  route,
   name,
   selectedFileName,
   selectedPhotoHandler,
 }: TProps) {
   const [photoList, setPhotoList] = useState<PhotoIdentifier[]>([]);
+  console.log(photoList[0].node.timestamp);
 
   const isCallStackNavigator = () => {
     navigation.navigate('WriteStack');
@@ -48,7 +50,7 @@ export default React.memo(function PhotoPageList({
 
   const getPhotos = async () => {
     try {
-      const { edges } = await CameraRoll.getPhotos({
+      const { edges, page_info } = await CameraRoll.getPhotos({
         first: 10,
       });
       setPhotoList(edges);
@@ -62,18 +64,12 @@ export default React.memo(function PhotoPageList({
   }, []);
 
   return (
-    <View
-      style={{
-        height: '100%',
-        backgroundColor: '#202020',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
+    <View style={tw`h-full bg-gray_20 justify-center items-center `}>
       <FlatList
-        scrollEnabled={false}
-        data={photoList}
-        horizontal={false}
         numColumns={3}
+        data={photoList}
+        scrollEnabled={false}
+        horizontal={false}
         keyExtractor={(_, index) => index.toString()}
         renderItem={({ item }) => {
           return (
