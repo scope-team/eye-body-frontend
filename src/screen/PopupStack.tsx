@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
-import Popup from '../components/Popup';
-import StackHeader from '../components/Header/StackHeader';
+import Popup from '@/components/Popup';
+import StackHeader from '@/components/Header/StackHeader';
 
 type TProps = {
   navigation: any;

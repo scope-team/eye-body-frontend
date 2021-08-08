@@ -56,7 +56,7 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-/ios/
+ios/
 
 # API keys
 .env
@@ -65,4 +65,4 @@ buck-out/
 /.vscode
 
 # package lock
-package.lock.json
+package-lock.json
