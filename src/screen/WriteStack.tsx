@@ -12,7 +12,7 @@ export default function WriteStack({ route, navigation }: TProps) {
   return (
     <View>
       <StackHeader navigation={navigation} />
-      <Write navigation={navigation} picture={route.params.picture}/>
+      <Write navigation={navigation} picture={route.params.picture} />
     </View>
   );
 }
