@@ -6,31 +6,10 @@ import EditPhotoHeader from '@/components/Header/EditPhotoHeader';
 import useStackContext from '@/lib/context/useStackContext';
 import Colors from '@/constants/Colors';
 import Layout from '@/constants/Layout';
+import { TSelectedPhotos } from '@/components/Gallery/types';
 
 export type TProps = {
   navigation: any;
-};
-
-export type TImages = {
-  fileSize: number;
-  filename: string;
-  height: number;
-  playableDuration: any;
-  uri: string;
-  width: number;
-};
-
-export type TPhotos = {
-  group_name: string;
-  image: TImages;
-  location: string | null;
-  timestamp: number;
-  type: string;
-};
-
-export type TSelectedPhotos = {
-  filename: string;
-  uri: string;
 };
 
 export default function GalleryIndex({ navigation }: TProps) {

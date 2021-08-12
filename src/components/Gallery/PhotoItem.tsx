@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
-import { TSelectedPhotos } from '@/components/Gallery';
+import { TSelectedPhotos } from '@/components/Gallery/types';
 
 type Tprop = {
   uri: string;
