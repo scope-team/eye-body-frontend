@@ -1,7 +1,3 @@
-export type TProps = {
-  navigation: any;
-};
-
 export type TImages = {
   fileSize: number;
   filename: string;

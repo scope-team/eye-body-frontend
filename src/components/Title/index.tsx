@@ -39,11 +39,3 @@ export default function Titleindex({ title, navigation }: TProps) {
     <View style={tw`flex-row justify-between w-96 h-12 px-8 bg-gray_20`}>{renderTitle()}</View>
   );
 }
-// {
-//   flexDirection: 'row',
-//   justifyContent: 'space-between',
-//   width: '100%',
-//   height: 60,
-//   paddingHorizontal: 30,
-//   backgroundColor: '#202020',
-// }

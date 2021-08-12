@@ -57,7 +57,7 @@ export default React.memo(function PhotoList({
 
   return (
     <View
-      style={tw`h-full gray_20`}
+      style={tw`h-full bg-gray_20`}
       // style={{
       //   height: '100%',
       //   backgroundColor: '#202020',
