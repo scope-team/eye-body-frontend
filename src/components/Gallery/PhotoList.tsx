@@ -3,7 +3,7 @@ import PhotoItem from '../../components/Gallery/PhotoItem';
 import { View, FlatList, Text } from 'react-native';
 import CameraRoll from '@react-native-community/cameraroll';
 import tw from 'styles/tailwind';
-import { TSelectedPhotos } from '@/components/Gallery';
+import { TSelectedPhotos } from '@/components/Gallery/types';
 import { dateFormatter } from '@/lib/date';
 import { TEdge, TGetPhotoRes, TInnerEdge } from '@/lib/models/photo';
 
