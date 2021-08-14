@@ -17,33 +17,31 @@ export default function Titleindex({ title, navigation }: TProps) {
     setPopupStackType('EditPhoto');
   };
 
-  const renderTitle = () => {
-    return (
-      <>
-        <View style={tw`flex-row px-4`}>
-          <Text style={tw`text-4xl font-extrabold text-white`}>{title}</Text>
-        </View>
-
-        {title === 'Gallery' ? (
+  const renderIcon = () => {
+    switch (title) {
+      case 'Gallery':
+        return (
           <TouchableOpacity onPress={handleChangeStack}>
             <SVGIcon icon="popup" size="46" />
           </TouchableOpacity>
-        ) : (
-          <SVGIcon icon={'check_black'} size="46" />
-        )}
-      </>
-    );
+        );
+      case 'Setting':
+        return;
+      case 'EditPhoto':
+        return;
+      case 'Select':
+        return;
+      default:
+        return <SVGIcon icon={'check_black'} size="46" />;
+    }
   };
 
   return (
-    <View style={tw`flex-row justify-between w-96 h-12 px-8 bg-gray_20`}>{renderTitle()}</View>
+    <>
+      <View style={tw`flex-row w-full h-16 px-10 bg-gray_20`}>
+        <Text style={tw`text-4xl font-bold text-white`}>{title}</Text>
+        <View style={tw`absolute right-10`}>{renderIcon()}</View>
+      </View>
+    </>
   );
 }
-// {
-//   flexDirection: 'row',
-//   justifyContent: 'space-between',
-//   width: '100%',
-//   height: 60,
-//   paddingHorizontal: 30,
-//   backgroundColor: '#202020',
-// }

@@ -8,10 +8,10 @@ type TProps = {
   navigation: any;
 };
 
-export default function GalleryStack({ navigation }: TProps) {
+export default function GalleryStack({ navigation, route }: TProps) {
   return (
     <View>
-      <StackHeader navigation={navigation} />
+      <StackHeader navigation={navigation} name={route.name} />
       <Gallery navigation={navigation} />
     </View>
   );

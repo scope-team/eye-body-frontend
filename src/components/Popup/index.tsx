@@ -53,7 +53,6 @@ export default function PopupIndex({ navigation }: TProps) {
 
   return (
     <>
-      <Title title={PopupStackType} navigation={navigation} />
       <View
         style={{
           width: '100%',

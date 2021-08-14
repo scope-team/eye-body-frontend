@@ -4,6 +4,7 @@ import Title from '@/components/Title';
 import tw from '@/styles/tailwind';
 import useCameraContext from '@/lib/context/useCameraContext';
 import SettingSwitch from '@/components/Setting/Switch';
+import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
@@ -14,9 +15,11 @@ type TStack = 'GalleryStack' | 'FAQStack';
 export default function SettingIndex({ navigation }: TProps) {
   const { mirrorImage, setMirrorImage, quality, setQuality, guideImage, setGuideImage } =
     useCameraContext();
+  const { setGalleryStack } = useStackContext();
 
   const isCallStackScreen = useCallback((screen: TStack) => {
     if (screen === 'GalleryStack') {
+      setGalleryStack('Select');
       navigation.navigate('GalleryStack');
     } else if (screen === 'FAQStack') {
       navigation.navigate('FAQStack');
@@ -26,7 +29,7 @@ export default function SettingIndex({ navigation }: TProps) {
   return (
     <View>
       <Title title="Setting" navigation={navigation} />
-      <View style={tw`flex-col p-10 bg-gray_20 h-full`}>
+      <View style={tw`flex-col px-10 bg-gray_20 h-full`}>
         <TouchableOpacity
           style={tw`flex flex-row justify-between items-center h-16 border-gray_39 border-b`}>
           <Text style={tw`text-base text-white`} onPress={() => isCallStackScreen('GalleryStack')}>
