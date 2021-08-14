@@ -16,7 +16,7 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
     navigation.goBack();
   };
 
-  const { WriteStackType } = useStackContext();
+  const { GalleryStackType, WriteStackType } = useStackContext();
 
   const renderHeader = () => {
     return (
@@ -41,7 +41,7 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
             <SVGIcon icon="check_neon" size="46" />
           </TouchableOpacity>
         ) : null}
-        {WriteStackType === 'SavePhoto' ? (
+        {WriteStackType === 'SavePhoto' && name !== 'GalleryStack' ? (
           <TouchableOpacity onPress={() => navigation.navigate('GalleryPage')}>
             <SVGIcon icon="check_neon" size="46" />
           </TouchableOpacity>
