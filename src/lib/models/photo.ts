@@ -25,6 +25,12 @@ export type TInnerEdge = {
   createdAt?: string;
 };
 
+export type TEdges = Array<TInnerEdges>;
+
+export type TInnerEdges = {
+  node: TNode;
+};
+
 // get result의 Node 키 타입
 export type TNode = {
   type: string;
