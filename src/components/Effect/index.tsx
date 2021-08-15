@@ -3,6 +3,7 @@ import { View, Text, ImageBackground } from 'react-native';
 import Layout from '@/constants/Layout';
 import AnimationImage from '@/components/Effect/AnimationImage';
 
+
 type Tprops = {
   selectedFileName: any;
   effectName: string;
@@ -25,7 +26,7 @@ export default function Effect({
         return (
           <>
             <Text
-              key={index}
+              key={p.url}
               style={{
                 display: isButtonOn ? 'flex' : 'none',
                 position: 'absolute',
