@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
-import { TSelectedPhotos } from '@/components/Gallery/types';
+import { TSelectedPhotos } from '@/components/Gallery';
+import tw from 'styles/tailwind';
 
 type Tprop = {
   uri: string;
@@ -21,21 +22,10 @@ export default React.memo(function PhotoItem({
   isSelect,
 }: Tprop) {
   return (
-    <View style={{ margin: 5 }}>
-      <View
-        style={{
-          width: 100,
-          height: 150,
-          backgroundColor: '#c1c1c1',
-        }}>
+    <View style={tw`m-1`}>
+      <View style={tw`w-28 h-48`}>
         {isEffect ? (
-          <View
-            style={{
-              position: 'absolute',
-              top: 5,
-              right: 5,
-              zIndex: 10,
-            }}>
+          <View style={tw`absolute top-1 right-1 z-10`}>
             <TouchableOpacity
               onPress={() => selectedPhotoHandler && selectedPhotoHandler({ filename, uri })}>
               <SVGIcon icon={isSelect ? 'check_complete' : 'empty_white_circle'} size="24" />
@@ -43,14 +33,7 @@ export default React.memo(function PhotoItem({
           </View>
         ) : null}
         <TouchableOpacity onPress={isCallStackNavigator}>
-          <ImageBackground
-            source={{ uri }}
-            style={{
-              justifyContent: 'space-between',
-              width: '100%',
-              height: '100%',
-            }}
-          />
+          <ImageBackground source={{ uri }} style={tw`justify-between w-full h-full`} />
         </TouchableOpacity>
       </View>
     </View>
