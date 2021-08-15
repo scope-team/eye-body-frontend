@@ -40,8 +40,7 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
           <TouchableOpacity onPress={finishEffectHandler}>
             <SVGIcon icon="check_neon" size="46" />
           </TouchableOpacity>
-        ) : null}
-        {WriteStackType === 'SavePhoto' && name !== 'GalleryStack' ? (
+        ) : WriteStackType === 'SavePhoto' && name !== 'GalleryStack' ? (
           <TouchableOpacity onPress={() => navigation.navigate('GalleryPage')}>
             <SVGIcon icon="check_neon" size="46" />
           </TouchableOpacity>
