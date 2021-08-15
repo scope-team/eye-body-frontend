@@ -8,6 +8,7 @@ import tw from 'styles/tailwind';
 type Tprops = {
   selectedFileName: any;
   speedOfAnimation?: number;
+  isAfterEffectPage?: boolean;
 };
 
 type TItem = {
@@ -15,7 +16,7 @@ type TItem = {
   index: number;
 };
 
-function AnimationImage({ selectedFileName, speedOfAnimation = 0 }: Tprops) {
+function AnimationImage({ selectedFileName, speedOfAnimation = 0, isAfterEffectPage }: Tprops) {
   const slideRef = useRef<any>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
@@ -47,7 +48,7 @@ function AnimationImage({ selectedFileName, speedOfAnimation = 0 }: Tprops) {
         ref={slideRef}
         autoplay={false}
         autoplayDelay={1500 - Math.floor(speedOfAnimation) * 100}
-        // autoplayInterval={1500}
+        autoplayInterval={1500 - Math.floor(speedOfAnimation) * 100}
         data={selectedFileName}
         renderItem={renderItem}
         sliderWidth={Layout.screen.width}
@@ -55,13 +56,15 @@ function AnimationImage({ selectedFileName, speedOfAnimation = 0 }: Tprops) {
         enableMomentum={true}
         lockScrollWhileSnapping={false}
       />
-      <TouchableOpacity onPress={playAnimationHandler}>
-        <SVGIcon
-          icon={isPlaying ? 'play_btn' : 'stop_btn'}
-          size="50"
-          style={tw`absolute bottom-7 left-45`}
-        />
-      </TouchableOpacity>
+      {!isAfterEffectPage ? (
+        <TouchableOpacity onPress={playAnimationHandler}>
+          <SVGIcon
+            icon={isPlaying ? 'play_btn' : 'stop_btn'}
+            size="50"
+            style={tw`absolute bottom-7 left-45`}
+          />
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 }

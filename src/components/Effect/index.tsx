@@ -9,6 +9,7 @@ type Tprops = {
   isButtonOn?: boolean;
   isWhite?: boolean;
   speedOfAnimation?: number;
+  isAfterEffectPage?: boolean;
 };
 
 export default function Effect({
@@ -17,6 +18,7 @@ export default function Effect({
   isButtonOn,
   isWhite,
   speedOfAnimation,
+  isAfterEffectPage,
 }: Tprops) {
   {
     const twoOfPhotoComponent = () => {
@@ -53,6 +55,7 @@ export default function Effect({
             <AnimationImage
               selectedFileName={selectedFileName}
               speedOfAnimation={speedOfAnimation}
+              isAfterEffectPage={isAfterEffectPage}
             />
           );
         }
