@@ -56,16 +56,7 @@ export default React.memo(function PhotoList({
   }, []);
 
   return (
-    <View
-      style={tw`h-full px-8 bg-gray_20`}
-      // style={{
-      //   height: '100%',
-      //   backgroundColor: '#202020',
-      //   justifyContent: 'center',
-      //   alignItems: 'center',
-      //   paddingBottom: 200,
-      // }}
-    >
+    <View style={tw`h-full justify-center items-center pb-52 background-color`}>
       <FlatList
         scrollEnabled={true}
         data={monthsList}
@@ -74,8 +65,8 @@ export default React.memo(function PhotoList({
         showsVerticalScrollIndicator={false}
         renderItem={({ item: month }) => {
           return (
-            <View style={{ marginBottom: 20 }}>
-              <Text style={{ color: 'white', paddingLeft: 5, marginBottom: 5 }}>{month}</Text>
+            <View style={tw`mb-3`}>
+              <Text style={tw`text-white pl-1 ml-1`}>{month}</Text>
               <FlatList
                 scrollEnabled={true}
                 data={photoList}
@@ -85,10 +76,7 @@ export default React.memo(function PhotoList({
                 showsVerticalScrollIndicator={false}
                 renderItem={({ item }) => {
                   return (
-                    <View
-                      style={{
-                        display: item.createdAt === month ? 'flex' : 'none',
-                      }}>
+                    <View style={tw`${item.createdAt === month ? 'flex' : 'hidden'}`}>
                       <PhotoItem
                         uri={item.node.image.uri}
                         filename={item.node.image.filename ?? ''}
@@ -108,43 +96,6 @@ export default React.memo(function PhotoList({
           );
         }}
       />
-
-      {/* {monthsList.map((month, index) => {
-        return (
-          <View style={{ height: '100%' }}>
-            <Text>{month}</Text>
-            <FlatList
-              scrollEnabled={true}
-              data={photoList}
-              horizontal={false}
-              numColumns={3}
-              keyExtractor={(_, index) => index.toString()}
-              renderItem={({ item }) => {
-                console.log(item);
-                return (
-                  <View
-                    style={{
-                      display: item.createdAt === month ? 'flex' : 'none',
-                    }}>
-                    <PhotoItem
-                      uri={item.node.image.uri}
-                      filename={item.node.image.filename ?? ''}
-                      timestamp={item.node.timestamp}
-                      isCallStackNavigator={isCallStackNavigator}
-                      isEffect={name !== 'GalleryPage' ? true : false}
-                      isSelect={
-                        selectedFileName &&
-                        selectedFileName.find(p => p.filename === item.node.image.filename)
-                      }
-                      selectedPhotoHandler={selectedPhotoHandler}
-                    />
-                  </View>
-                );
-              }}
-            />
-          </View>
-        );
-      })} */}
     </View>
   );
 });

@@ -5,6 +5,7 @@ import SVGIcon from '@/lib/svg/SVGIcon';
 import Layout from '@/constants/Layout';
 import Colors from '@/constants/Colors';
 import Slider from '@react-native-community/slider';
+import tw from 'styles/tailwind';
 
 type Tprops = {
   effectName: string;
@@ -28,76 +29,44 @@ export default function EffectBottomMenu({
       case 'Compare':
         return (
           <View>
-            <View style={{ flexDirection: 'row' }}></View>
+            <View style={tw`flex-row`}></View>
           </View>
         );
       case 'Before & After':
         return (
-          <View
-            style={{
-              alignItems: 'center',
-              width: Layout.screen.width,
-            }}>
-            <View style={{ flexDirection: 'row' }}>
+          <View style={tw`items-center w-full`}>
+            <View style={tw`flex-row`}>
               <ToggleSwitch
                 isOn={isButtonOn}
                 onColor={Colors.mainColor}
                 offColor="black"
                 label="텍스트 표시"
-                labelStyle={{
-                  color: 'white',
-                  fontWeight: '500',
-                  fontSize: 20,
-                  paddingRight: 90,
-                }}
+                labelStyle={tw`text-white text-xl pr-24`}
                 size="medium"
                 onToggle={(isOn: any) => switchingButtonHandler()}
               />
             </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-end',
-                width: Layout.screen.width,
-                paddingRight: 70,
-                paddingTop: 20,
-              }}>
+            <View style={tw`flex-row justify-end pr-16 pt-5 w-full`}>
               <TouchableOpacity onPress={() => switchingColorHandler(true)}>
-                <View
-                  style={{
-                    position: 'relative',
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingRight: 20,
-                  }}>
+                <View style={tw`flex-row relative items-center pr-5`}>
                   <SVGIcon icon="black_circle" size="20" style={{ marginRight: 5 }} />
                   <SVGIcon
                     icon="neon_circle"
                     size="13"
-                    style={{
-                      display: isWhite ? 'flex' : 'none',
-                      position: 'absolute',
-                      top: 3,
-                      left: 4,
-                    }}
+                    style={tw`${isWhite ? 'flex' : 'hidden'} absolute top-1 left-1`}
                   />
-                  <Text style={{ color: 'white', flexDirection: 'row' }}>화이트</Text>
+                  <Text style={tw`flex-row text-white`}>화이트</Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => switchingColorHandler(false)}>
-                <View style={{ position: 'relative', flexDirection: 'row', alignItems: 'center' }}>
+                <View style={tw`relative flex-row items-center`}>
                   <SVGIcon icon="black_circle" size="20" style={{ marginRight: 5 }} />
                   <SVGIcon
                     icon="neon_circle"
                     size="13"
-                    style={{
-                      display: isWhite ? 'none' : 'flex',
-                      position: 'absolute',
-                      top: 3,
-                      left: 4,
-                    }}
+                    style={tw`${isWhite ? 'hidden' : 'flex'} absolute top-1 left-1`}
                   />
-                  <Text style={{ color: 'white' }}>블랙</Text>
+                  <Text style={tw`text-white`}>블랙</Text>
                 </View>
               </TouchableOpacity>
             </View>
@@ -105,14 +74,8 @@ export default function EffectBottomMenu({
         );
       case 'Animation':
         return (
-          <View
-            style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: Layout.screen.width,
-            }}>
-            <Text style={{ fontSize: 50, color: 'white', marginBottom: 5, marginRight: 5 }}>-</Text>
+          <View style={tw`flex-row items-center justify-center w-full`}>
+            <Text style={tw`text-4xl text-white mb-1 mr-1`}>-</Text>
             <Slider
               style={{
                 width: Layout.window.width / 1.3,
@@ -125,7 +88,7 @@ export default function EffectBottomMenu({
               maximumTrackTintColor="#000000"
               onValueChange={changeAnimationValueHandler}
             />
-            <Text style={{ fontSize: 40, color: 'white', marginBottom: 5, marginLeft: 5 }}>+</Text>
+            <Text style={tw`text-3xl text-white mb-1 ml-1`}>+</Text>
           </View>
         );
       default:

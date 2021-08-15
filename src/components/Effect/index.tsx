@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
 import Layout from '@/constants/Layout';
 import AnimationImage from '@/components/Effect/AnimationImage';
+import tw from 'styles/tailwind';
 
 type Tprops = {
   selectedFileName: any;
@@ -26,19 +27,13 @@ export default function Effect({
           <>
             <Text
               key={index}
-              style={{
-                display: isButtonOn ? 'flex' : 'none',
-                position: 'absolute',
-                top: 0,
-                left: Layout.screen.width / 2 - 70,
-                color: isWhite ? 'white' : 'black',
-                zIndex: 1,
-                fontSize: 20,
-              }}>
+              style={tw`${isButtonOn ? 'flex' : 'hidden'} ${
+                isWhite ? 'text-white' : 'text-black'
+              } absolute z-10 text-lg top-0 left-1/3`}>
               {effectName}
             </Text>
-            <View style={{ width: 200, height: 200 }} key={p.uri}>
-              <ImageBackground source={{ uri }} style={{ width: '100%', height: '100%' }} />
+            <View style={tw`h-48 w-48`} key={p.uri}>
+              <ImageBackground source={{ uri }} style={tw`w-full h-full`} />
             </View>
           </>
         );
@@ -68,10 +63,6 @@ export default function Effect({
       }
     };
 
-    return (
-      <View style={{ flexDirection: 'row', width: Layout.screen.width }}>
-        {renderEffectComponent()}
-      </View>
-    );
+    return <View style={tw`flex-row w-full`}>{renderEffectComponent()}</View>;
   }
 }

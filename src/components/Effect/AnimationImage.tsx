@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Layout from '@/constants/Layout';
 import SVGIcon from '@/lib/svg/SVGIcon';
+import tw from 'styles/tailwind';
 
 type Tprops = {
   selectedFileName: any;
@@ -35,13 +36,13 @@ function AnimationImage({ selectedFileName, speedOfAnimation }: Tprops) {
           height: Layout.screen.height / 2,
           position: 'relative',
         }}>
-        <ImageBackground source={{ uri: item.uri }} style={{ width: '100%', height: '100%' }} />
+        <ImageBackground source={{ uri: item.uri }} style={tw`w-full h-full`} />
       </View>
     );
   };
 
   return (
-    <View>
+    <View style={tw`w-full`}>
       <Carousel
         ref={slideRef}
         autoplay={false}
@@ -58,11 +59,7 @@ function AnimationImage({ selectedFileName, speedOfAnimation }: Tprops) {
         <SVGIcon
           icon={isPlaying ? 'play_btn' : 'stop_btn'}
           size="50"
-          style={{
-            position: 'absolute',
-            bottom: 30,
-            left: Layout.screen.width / 2 - 20,
-          }}
+          style={tw`absolute bottom-7 left-45`}
         />
       </TouchableOpacity>
     </View>
