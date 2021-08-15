@@ -1,16 +1,14 @@
 import React from 'react';
 import { View, Text, ImageBackground } from 'react-native';
-import Layout from '@/constants/Layout';
 import AnimationImage from '@/components/Effect/AnimationImage';
 import tw from 'styles/tailwind';
 
-
 type Tprops = {
   selectedFileName: any;
-  effectName: string;
-  isButtonOn: boolean;
-  isWhite: boolean;
-  speedOfAnimation: number;
+  effectName?: string;
+  isButtonOn?: boolean;
+  isWhite?: boolean;
+  speedOfAnimation?: number;
 };
 
 export default function Effect({

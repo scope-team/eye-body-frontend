@@ -26,6 +26,10 @@ import StopButton from '@/assets/icons/effect/stop_btn.svg';
 import ButtonToTakePic from '@/assets/icons/camera/buttonToTakePictures.svg';
 import Controller from '@/assets/icons/camera/controller.svg';
 import Switch from '@/assets/icons/global/switch.svg';
+import Cancel from '@/assets/icons/global/cancel.svg';
+import Save from '@/assets/icons/effect/save.svg';
+import Share from '@/assets/icons/effect/share.svg';
+import Logo from '@/assets/icons/effect/team_logo.svg';
 import { theme } from '@/../tailwind.config';
 import Svg, { Path } from 'react-native-svg';
 
@@ -52,6 +56,10 @@ const icons: ObjType = {
   buttonToTakePic: ButtonToTakePic,
   controller: Controller,
   switch: Switch,
+  cancel: Cancel,
+  save: Save,
+  share: Share,
+  team_logo: Logo,
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke, fill }: Iprops) => {

@@ -8,10 +8,16 @@ const arrowBack = require('assets/images/header/arrow_back.png');
 type TProps = {
   navigation: any;
   name?: string;
+  isAfterEffectPage?: boolean;
   finishEffectHandler?: () => void;
 };
 
-export default function StackHeader({ navigation, name, finishEffectHandler }: TProps) {
+export default function StackHeader({
+  navigation,
+  name,
+  finishEffectHandler,
+  isAfterEffectPage,
+}: TProps) {
   const handleChangeStack = () => {
     navigation.goBack();
   };
@@ -36,9 +42,13 @@ export default function StackHeader({ navigation, name, finishEffectHandler }: T
             }}
           />
         </TouchableOpacity>
-        {name === 'EffectPage' ? (
+        {name === 'EffectPage' && !isAfterEffectPage ? (
           <TouchableOpacity onPress={finishEffectHandler}>
             <SVGIcon icon="check_neon" size="46" />
+          </TouchableOpacity>
+        ) : isAfterEffectPage ? (
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <SVGIcon icon="cancel" size="46" />
           </TouchableOpacity>
         ) : WriteStackType === 'SavePhoto' && name !== 'GalleryStack' ? (
           <TouchableOpacity onPress={() => navigation.navigate('GalleryPage')}>
