@@ -21,6 +21,7 @@ export default React.memo(function PhotoItem({
   isEffect,
   isSelect,
 }: Tprop) {
+  console.log(isEffect);
   return (
     <View style={tw`m-1`}>
       <View style={tw`w-28 h-48`}>

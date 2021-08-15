@@ -6,6 +6,7 @@ import Layout from '@/constants/Layout';
 import Effect from '@/components/Effect';
 import SwitchEffect from '@/components/Effect/SwitchEffect';
 import EffectBottomMenu from '@/components/Effect/EffectBottomMenu';
+import useStackContext from '@/lib/context/useStackContext';
 
 type TProps = {
   navigation: any;
@@ -17,12 +18,14 @@ export default function EffectPage({ navigation, route }: TProps) {
   const [isWhite, setIsWhite] = useState<boolean>(false);
   const [speedOfAnimation, setSpeedOfAnimation] = useState<number>(0);
 
-  useEffect(() => {
-    const { selectedFileName } = route.params;
-  }, []);
+  const { GalleryStackType } = useStackContext();
 
   const finishEffectHandler = () => {
-    console.log('D');
+    const { selectedFileName } = route.params;
+    navigation.navigate('ResultPage', {
+      selectedFileName,
+      effectName: GalleryStackType,
+    });
   };
 
   const switchingButtonHandler = () => {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, ImageBackground, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Layout from '@/constants/Layout';
 import SVGIcon from '@/lib/svg/SVGIcon';
@@ -7,7 +7,7 @@ import tw from 'styles/tailwind';
 
 type Tprops = {
   selectedFileName: any;
-  speedOfAnimation: number;
+  speedOfAnimation?: number;
 };
 
 type TItem = {
@@ -15,7 +15,7 @@ type TItem = {
   index: number;
 };
 
-function AnimationImage({ selectedFileName, speedOfAnimation }: Tprops) {
+function AnimationImage({ selectedFileName, speedOfAnimation = 0 }: Tprops) {
   const slideRef = useRef<any>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
