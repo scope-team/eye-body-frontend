@@ -5,6 +5,8 @@ import SVGIcon from '@/lib/svg/SVGIcon';
 import Layout from '@/constants/Layout';
 import Colors from '@/constants/Colors';
 import Slider from '@react-native-community/slider';
+import SettingSwitch from '@/components/Setting/Switch';
+import tw from 'styles/tailwind';
 
 type Tprops = {
   effectName: string;
@@ -38,21 +40,11 @@ export default function EffectBottomMenu({
               alignItems: 'center',
               width: Layout.screen.width,
             }}>
-            <View style={{ flexDirection: 'row' }}>
-              <ToggleSwitch
-                isOn={isButtonOn}
-                onColor={Colors.mainColor}
-                offColor="black"
-                label="텍스트 표시"
-                labelStyle={{
-                  color: 'white',
-                  fontWeight: '500',
-                  fontSize: 20,
-                  paddingRight: 90,
-                }}
-                size="medium"
-                onToggle={(isOn: any) => switchingButtonHandler()}
-              />
+            <View style={tw`flex-row items-center`}>
+              <Text style={tw`text-white text-2xl pr-24`}>텍스트 표시</Text>
+              <TouchableOpacity onPress={() => switchingButtonHandler()}>
+                <SettingSwitch width="63" height="24" isOn={isButtonOn} />
+              </TouchableOpacity>
             </View>
             <View
               style={{
