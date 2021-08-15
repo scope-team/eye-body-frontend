@@ -22,6 +22,7 @@
     "react-native-gl-image-filters": "^0.4.0",
     "react-native-permissions": "^3.0.5",
     "react-native-safe-area": "^0.5.1",
+    "react-native-share": "^7.0.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",

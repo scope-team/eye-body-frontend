@@ -33,13 +33,7 @@ export default React.memo(function PhotoItem({
             </TouchableOpacity>
           </View>
         ) : null}
-        <TouchableOpacity
-          onPress={() => {
-            if (!isEffect) {
-              isCallStackNavigator();
-            }
-            return;
-          }}>
+        <TouchableOpacity onPress={isCallStackNavigator}>
           <ImageBackground source={{ uri }} style={tw`justify-between w-full h-full`} />
         </TouchableOpacity>
       </View>
