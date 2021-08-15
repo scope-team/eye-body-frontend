@@ -21,7 +21,9 @@ export default function EffectPage({ navigation, route }: TProps) {
     const { selectedFileName } = route.params;
   }, []);
 
-  const finishEffectHandler = () => {};
+  const finishEffectHandler = () => {
+    console.log('D');
+  };
 
   const switchingButtonHandler = () => {
     setIsButtonOn(!isButtonOn);

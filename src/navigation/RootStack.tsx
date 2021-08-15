@@ -8,6 +8,7 @@ import PopupStack from '@/screen/PopupStack';
 import FAQStack from '@/screen/FAQStack';
 import CameraStack from '@/screen/CameraStack';
 import EffectPage from '@/screen/EffectPage';
+import ResultPage from '@/screen/ResultPage';
 
 type TProps = {};
 
@@ -20,6 +21,7 @@ type TRootStackParamList = {
   PopupStack: undefined;
   FAQStack: undefined;
   EffectPage: undefined;
+  ResultPage: undefined;
 };
 
 export default function RootStack({}: TProps) {
@@ -81,6 +83,13 @@ export default function RootStack({}: TProps) {
       <Stack.Screen
         name="EffectPage"
         component={EffectPage}
+        options={({ navigation }) => ({
+          headerShown: false,
+        })}
+      />
+      <Stack.Screen
+        name="ResultPage"
+        component={ResultPage}
         options={({ navigation }) => ({
           headerShown: false,
         })}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import SVGIcon from '@/lib/svg/SVGIcon';
-import { TSelectedPhotos } from '@/components/Gallery';
+import { TSelectedPhotos } from '@/components/Gallery/types';
 import tw from 'styles/tailwind';
 
 type Tprop = {
@@ -32,7 +32,13 @@ export default React.memo(function PhotoItem({
             </TouchableOpacity>
           </View>
         ) : null}
-        <TouchableOpacity onPress={isCallStackNavigator}>
+        <TouchableOpacity
+          onPress={() => {
+            if (!isEffect) {
+              isCallStackNavigator();
+            }
+            return;
+          }}>
           <ImageBackground source={{ uri }} style={tw`justify-between w-full h-full`} />
         </TouchableOpacity>
       </View>
