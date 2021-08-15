@@ -7278,5 +7278,11 @@
   },
   "no-underline": {
     "textDecorationLine": "none"
+  },
+  "background-color": {
+    "backgroundColor": "#202020"
+  },
+  "left-45": {
+    "left": "45%"
   }
 }
