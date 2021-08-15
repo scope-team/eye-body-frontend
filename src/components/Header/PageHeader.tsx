@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Image, TouchableOpacity } from 'react-native';
-
+import tw from '@/styles/tailwind';
 const arrowClose = require('assets/images/header/arrow_close.png');
 
 type TProps = {
@@ -15,28 +15,14 @@ export default function PageHeader({ navigation }: TProps) {
   const renderHeader = () => {
     return (
       <TouchableOpacity
-        style={{
-          position: 'absolute',
-          bottom: 5,
-          right: 11,
-          width: 46,
-          height: 46,
-        }}
+        style={tw`absolute top-12 right-6 w-12 h-12`}
         onPress={() => {
           handleCloseStack();
         }}>
-        <Image
-          source={arrowClose}
-          style={{
-            width: 46,
-            height: 46,
-          }}
-        />
+        <Image source={arrowClose} style={tw`w-12 h-12 `} />
       </TouchableOpacity>
     );
   };
 
-  return (
-    <View style={{ width: '100%', height: 100, backgroundColor: '#202020' }}>{renderHeader()}</View>
-  );
+  return <View style={tw`w-full h-28 bg-gray_20`}>{renderHeader()}</View>;
 }
