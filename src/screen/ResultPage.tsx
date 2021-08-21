@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { View, Alert, TouchableOpacity, PermissionsAndroid, Platform } from 'react-native';
 import StackHeader from '../components/Header/StackHeader';
 import Effect from '@/components/Effect';
 import SVGIcon from '@/lib/svg/SVGIcon';
 import Share from 'react-native-share';
+import { Social } from 'react-native-share/lib/typescript/types';
 import ViewShot from 'react-native-view-shot';
 import CameraRoll from '@react-native-community/cameraroll';
 import tw from 'styles/tailwind';
@@ -22,11 +23,11 @@ export default function ResultPage({ navigation, route }: TProps) {
     return uri;
   };
 
-  const onCapture = async (social: any) => {
+  const onCapture = async (social: Social | null) => {
     try {
       const uri = await getPhotoUri();
 
-      const options = {
+      const options: any = {
         title: 'Share Title',
         message: 'Share Message',
         url: uri,
