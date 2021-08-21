@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { View, ImageBackground, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import Layout from '@/constants/Layout';

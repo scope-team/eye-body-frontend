@@ -21,7 +21,6 @@ export default React.memo(function PhotoItem({
   isEffect,
   isSelect,
 }: Tprop) {
-  console.log(isEffect);
   return (
     <View style={tw`m-1`}>
       <View style={tw`w-28 h-48`}>
@@ -33,7 +32,14 @@ export default React.memo(function PhotoItem({
             </TouchableOpacity>
           </View>
         ) : null}
-        <TouchableOpacity onPress={isCallStackNavigator}>
+        <TouchableOpacity
+          onPress={() => {
+            if (isEffect) {
+              selectedPhotoHandler && selectedPhotoHandler({ filename, uri });
+              return;
+            }
+            isCallStackNavigator();
+          }}>
           <ImageBackground source={{ uri }} style={tw`justify-between w-full h-full`} />
         </TouchableOpacity>
       </View>

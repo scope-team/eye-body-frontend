@@ -20,6 +20,7 @@
     "react-native-camera": "^4.0.0",
     "react-native-camera-roll-picker": "^2.0.0",
     "react-native-gl-image-filters": "^0.4.0",
+    "react-native-kakao-links": "^1.0.6",
     "react-native-permissions": "^3.0.5",
     "react-native-safe-area": "^0.5.1",
     "react-native-share": "^7.0.0",
@@ -27,8 +28,7 @@
     "react-native-svg": "^12.1.1",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-view-shot": "^3.1.2",
-    "tailwind-react-native-classnames": "^1.4.1",
-    "toggle-switch-react-native": "^3.2.0"
+    "tailwind-react-native-classnames": "^1.4.1"
   },
   "devDependencies": {
     "@apollo/client": "^3.3.20",

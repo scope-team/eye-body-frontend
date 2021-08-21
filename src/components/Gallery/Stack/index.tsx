@@ -17,8 +17,6 @@ export default function GalleryIndex({ navigation }: TProps) {
 
   const { GalleryStackType } = useStackContext();
 
-  useEffect(() => {}, []);
-
   const selectedPhotoHandler = ({ filename, uri }: TSelectedPhotos) => {
     if (GalleryStackType !== 'Animation' && selectedFileName.length >= 2) {
       Alert.alert('2장을 초과했습니다.');
@@ -48,6 +46,14 @@ export default function GalleryIndex({ navigation }: TProps) {
   };
 
   const goToEffectScreen = () => {
+    if (GalleryStackType === 'Animation' && selectedFileName.length < 3) {
+      Alert.alert('사진을 더 선택해주세요!');
+      return;
+    } else if (selectedFileName.length < 2) {
+      Alert.alert('사진을 더 선택해주세요!');
+      return;
+    }
+
     navigation.navigate('EffectPage', {
       selectedFileName,
       effectName: GalleryStackType,
