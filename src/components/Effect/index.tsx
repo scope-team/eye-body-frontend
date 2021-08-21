@@ -33,7 +33,7 @@ export default function Effect({
               } absolute z-10 text-lg top-0 left-1/3`}>
               {effectName}
             </Text>
-            <View style={tw`h-48 w-48`} key={p.uri}>
+            <View style={tw`h-52 w-52`} key={p.uri}>
               <ImageBackground source={{ uri }} style={tw`w-full h-full`} />
             </View>
           </>
