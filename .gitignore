@@ -56,7 +56,7 @@ buck-out/
 *.jsbundle
 
 # CocoaPods
-ios/
+ios/Pods
 
 # API keys
 .env
