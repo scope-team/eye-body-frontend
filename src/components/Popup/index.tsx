@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import useStackContext, { TGalleryStack } from '@/lib/context/useStackContext';
 import Title from '@/components/Title';
+import useStackContext, { TGalleryStack } from '@/lib/context/useStackContext';
+import SVGIcon from '@/lib/svg/SVGIcon';
+import tw from '@/styles/tailwind';
 
 type TProps = {
   navigation: any;
@@ -20,22 +22,28 @@ export default function PopupIndex({ navigation }: TProps) {
   const render = () => {
     if (PopupStackType === 'EditPhoto') {
       return (
-        <View style={{ height: '100%', backgroundColor: '#202020' }}>
-          <Text style={{ color: 'white', fontSize: 20 }}>어떻게 편집할까요?</Text>
+        <View style={tw`h-2/3 content-center justify-center`}>
+          <Text style={tw`text-white text-lg text-center mb-8 relative w-full`}>
+            어떻게 편집할까요? <SVGIcon icon="question" size="16" style={{ marginBottom: 4 }} />
+          </Text>
+
           {MENU.map(title => {
             return (
               <TouchableOpacity
+                style={tw`h-12 bg-themeColor border30 w-full my-2`}
                 onPress={() => {
                   goToEditPhotoPage(title);
                 }}
                 key={title}>
-                <Text style={{ color: 'white', fontSize: 20 }}>{title}</Text>
+                <View style={tw`h-full w-full`}>
+                  <Text style={tw`text-black text-center m-auto text-lg font-medium`}>{title}</Text>
+                </View>
               </TouchableOpacity>
             );
           })}
         </View>
       );
-    } 
+    }
     if (PopupStackType === 'SelectGuide') {
       return (
         <View style={{ height: '100%', backgroundColor: '#202020' }}>

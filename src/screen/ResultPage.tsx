@@ -83,7 +83,7 @@ export default function ResultPage({ navigation, route }: TProps) {
             effectName={route.params.effectName}
             isAfterEffectPage
           />
-          <SVGIcon icon="team_logo" size="90" style={tw`absolute left-40 bottom-0`} />
+          <SVGIcon icon="team_logo" size="90" style={tw`absolute left-40dh bottom-0`} />
         </View>
       </ViewShot>
       <View style={tw`flex-row items-center justify-center`}>

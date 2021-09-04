@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { ImageBackground, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { RNCamera, TakePictureResponse } from 'react-native-camera';
 import tw from 'styles/tailwind';
 import CameraRoll from '@react-native-community/cameraroll';
