@@ -30,6 +30,7 @@ import Cancel from '@/assets/icons/global/cancel.svg';
 import Save from '@/assets/icons/effect/save.svg';
 import Share from '@/assets/icons/effect/share.svg';
 import Logo from '@/assets/icons/effect/team_logo.svg';
+import Question from '@/assets/icons/popup/question.svg'
 import { theme } from '@/../tailwind.config';
 import Svg, { Path } from 'react-native-svg';
 
@@ -60,6 +61,7 @@ const icons: ObjType = {
   save: Save,
   share: Share,
   team_logo: Logo,
+  question: Question
 };
 
 const SVGIcon = ({ icon, size, width, height, style, stroke, fill }: Iprops) => {

@@ -4,7 +4,7 @@ import tw from 'styles/tailwind';
 
 type TProps = {
   navigation: any;
-  picture: { uri: string; height: number; width: number; base64: string };
+  picture: { uri: string; height: number; width: number; base64: string } | undefined;
 };
 
 export default function Writeindex({ navigation, picture }: TProps) {
@@ -12,7 +12,11 @@ export default function Writeindex({ navigation, picture }: TProps) {
 
   return (
     <View style={tw`relative h-full w-full`}>
-      <ImageBackground style={tw`w-full h-full`} source={{ uri: picture.uri }} resizeMode="cover" />
+      <ImageBackground
+        style={tw`w-full h-full`}
+        source={{ uri: picture?.uri }}
+        resizeMode="cover"
+      />
       <View style={tw`absolute bottom-0 left-0 right-0 top-96`}>
         <TextInput
           autoFocus
@@ -21,6 +25,7 @@ export default function Writeindex({ navigation, picture }: TProps) {
           multiline
           placeholderTextColor="white"
           placeholder="메모를 입력하세요👀"
+          defaultValue={text}
         />
       </View>
     </View>
