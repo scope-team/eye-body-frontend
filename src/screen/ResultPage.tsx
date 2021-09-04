@@ -23,31 +23,31 @@ export default function ResultPage({ navigation, route }: TProps) {
     return uri;
   };
 
-  // const onCapture = async (social: Social | any) => {
-  //   try {
-  //     const uri = await getPhotoUri();
+  const onCapture = async (social: any) => {
+    try {
+      const uri = await getPhotoUri();
 
-  //     const options: any = {
-  //       title: 'Share Title',
-  //       message: 'Share Message',
-  //       url: uri,
-  //       type: 'image/jpeg',
-  //     };
-
-  //     if (social === null) {
-  //       const result = await Share.open(options);
-  //       console.log('😻😻 result with no social', result);
-  //     } else {
-  //       const result = await Share.shareSingle({
-  //         ...options,
-  //         social,
-  //       });
-  //       console.log(`😻😻 result with social ${social}`, result);
-  //     }
-  //   } catch (e) {
-  //     console.log('😻😻😻 snapshot failed', e);
-  //   }
-  // };
+      const options: any = {
+        title: 'Share Title',
+        message: 'Share Message',
+        url: uri,
+        type: 'image/jpeg',
+      };
+      console.log(Share.shareSingle);
+      if (social === null) {
+        const result = await Share.open(options);
+        console.log('😻😻 result with no social', result);
+      } else {
+        const result = await Share.shareSingle({
+          ...options,
+          social,
+        });
+        console.log(`😻😻 result with social ${social}`, result);
+      }
+    } catch (e) {
+      console.log('😻😻😻 snapshot failed', e);
+    }
+  };
 
   const onSaveHandler = async () => {
     if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
@@ -91,10 +91,9 @@ export default function ResultPage({ navigation, route }: TProps) {
           <SVGIcon icon="save" size="120" />
         </TouchableOpacity>
         <TouchableOpacity
-        // onPress={() => {
-        //   onCapture(null);
-        // }}
-        >
+          onPress={() => {
+            onCapture('facebook');
+          }}>
           <SVGIcon icon="share" size="120" />
         </TouchableOpacity>
       </View>
