@@ -57,7 +57,7 @@ buck-out/
 
 # CocoaPods
 ios/Pods
-
+ios/eyebody.xcodeproj/project.xcworkspace/
 # API keys
 .env
 
