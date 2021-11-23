@@ -1,6 +1,5 @@
 PODS:
   - boost-for-react-native (1.63.0)
-  - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
   - FBLazyVector (0.64.1)
   - FBReactNativeSpec (0.64.1):
@@ -10,70 +9,8 @@ PODS:
     - React-Core (= 0.64.1)
     - React-jsi (= 0.64.1)
     - ReactCommon/turbomodule/core (= 0.64.1)
-  - Flipper (0.96.0):
-    - Flipper-Folly (~> 2.6)
-    - Flipper-RSocket (~> 1.4)
-  - Flipper-Boost-iOSX (1.76.0.1.11)
-  - Flipper-DoubleConversion (1.1.7)
-  - Flipper-Fmt (7.1.7)
-  - Flipper-Folly (2.6.9):
-    - Flipper-Boost-iOSX
-    - Flipper-DoubleConversion
-    - Flipper-Fmt (= 7.1.7)
-    - Flipper-Glog
-    - libevent (~> 2.1.12)
-    - OpenSSL-Universal (= 1.1.1100)
-  - Flipper-Glog (0.3.6)
-  - Flipper-PeerTalk (0.0.4)
-  - Flipper-RSocket (1.4.3):
-    - Flipper-Folly (~> 2.6)
-  - FlipperKit (0.96.0):
-    - FlipperKit/Core (= 0.96.0)
-  - FlipperKit/Core (0.96.0):
-    - Flipper (~> 0.96.0)
-    - FlipperKit/CppBridge
-    - FlipperKit/FBCxxFollyDynamicConvert
-    - FlipperKit/FBDefines
-    - FlipperKit/FKPortForwarding
-  - FlipperKit/CppBridge (0.96.0):
-    - Flipper (~> 0.96.0)
-  - FlipperKit/FBCxxFollyDynamicConvert (0.96.0):
-    - Flipper-Folly (~> 2.6)
-  - FlipperKit/FBDefines (0.96.0)
-  - FlipperKit/FKPortForwarding (0.96.0):
-    - CocoaAsyncSocket (~> 7.6)
-    - Flipper-PeerTalk (~> 0.0.4)
-  - FlipperKit/FlipperKitHighlightOverlay (0.96.0)
-  - FlipperKit/FlipperKitLayoutHelpers (0.96.0):
-    - FlipperKit/Core
-    - FlipperKit/FlipperKitHighlightOverlay
-    - FlipperKit/FlipperKitLayoutTextSearchable
-  - FlipperKit/FlipperKitLayoutIOSDescriptors (0.96.0):
-    - FlipperKit/Core
-    - FlipperKit/FlipperKitHighlightOverlay
-    - FlipperKit/FlipperKitLayoutHelpers
-    - YogaKit (~> 1.18)
-  - FlipperKit/FlipperKitLayoutPlugin (0.96.0):
-    - FlipperKit/Core
-    - FlipperKit/FlipperKitHighlightOverlay
-    - FlipperKit/FlipperKitLayoutHelpers
-    - FlipperKit/FlipperKitLayoutIOSDescriptors
-    - FlipperKit/FlipperKitLayoutTextSearchable
-    - YogaKit (~> 1.18)
-  - FlipperKit/FlipperKitLayoutTextSearchable (0.96.0)
-  - FlipperKit/FlipperKitNetworkPlugin (0.96.0):
-    - FlipperKit/Core
-  - FlipperKit/FlipperKitReactPlugin (0.96.0):
-    - FlipperKit/Core
-  - FlipperKit/FlipperKitUserDefaultsPlugin (0.96.0):
-    - FlipperKit/Core
-  - FlipperKit/SKIOSNetworkPlugin (0.96.0):
-    - FlipperKit/Core
-    - FlipperKit/FlipperKitNetworkPlugin
   - glog (0.3.5)
-  - libevent (2.1.12)
-  - OpenSSL-Universal (1.1.1100)
-  - Permission-Camera (3.0.5):
+  - Permission-Camera (3.1.0):
     - RNPermissions
   - RCT-Folly (2020.01.13.00):
     - boost-for-react-native
@@ -268,19 +205,19 @@ PODS:
     - React-jsi (= 0.64.1)
     - React-perflogger (= 0.64.1)
   - React-jsinspector (0.64.1)
-  - react-native-camera (4.0.3):
+  - react-native-camera (4.2.1):
     - React-Core
-    - react-native-camera/RCT (= 4.0.3)
-    - react-native-camera/RN (= 4.0.3)
-  - react-native-camera/RCT (4.0.3):
+    - react-native-camera/RCT (= 4.2.1)
+    - react-native-camera/RN (= 4.2.1)
+  - react-native-camera/RCT (4.2.1):
     - React-Core
-  - react-native-camera/RN (4.0.3):
+  - react-native-camera/RN (4.2.1):
     - React-Core
-  - react-native-cameraroll (4.0.4):
+  - react-native-cameraroll (4.1.2):
     - React-Core
   - react-native-safe-area (0.5.1):
     - React
-  - react-native-safe-area-context (3.3.0):
+  - react-native-safe-area-context (3.3.2):
     - React-Core
   - react-native-slider (3.0.3):
     - React
@@ -354,9 +291,9 @@ PODS:
     - React
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNPermissions (3.0.5):
+  - RNPermissions (3.1.0):
     - React-Core
-  - RNReanimated (2.2.0):
+  - RNReanimated (2.2.4):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -385,40 +322,19 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.5.0):
+  - RNScreens (3.9.0):
     - React-Core
     - React-RCTImage
-  - RNShare (7.0.0):
+  - RNShare (7.3.0):
     - React-Core
   - RNSVG (12.1.1):
     - React
   - Yoga (1.14.0)
-  - YogaKit (1.18.1):
-    - Yoga (~> 1.14)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
-  - Flipper (= 0.96.0)
-  - Flipper-DoubleConversion (= 1.1.7)
-  - Flipper-Folly (~> 2.6)
-  - Flipper-Glog (= 0.3.6)
-  - Flipper-PeerTalk (~> 0.0.4)
-  - Flipper-RSocket (~> 1.4)
-  - FlipperKit (= 0.96.0)
-  - FlipperKit/Core (= 0.96.0)
-  - FlipperKit/CppBridge (= 0.96.0)
-  - FlipperKit/FBCxxFollyDynamicConvert (= 0.96.0)
-  - FlipperKit/FBDefines (= 0.96.0)
-  - FlipperKit/FKPortForwarding (= 0.96.0)
-  - FlipperKit/FlipperKitHighlightOverlay (= 0.96.0)
-  - FlipperKit/FlipperKitLayoutPlugin (= 0.96.0)
-  - FlipperKit/FlipperKitLayoutTextSearchable (= 0.96.0)
-  - FlipperKit/FlipperKitNetworkPlugin (= 0.96.0)
-  - FlipperKit/FlipperKitReactPlugin (= 0.96.0)
-  - FlipperKit/FlipperKitUserDefaultsPlugin (= 0.96.0)
-  - FlipperKit/SKIOSNetworkPlugin (= 0.96.0)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Permission-Camera (from `../node_modules/react-native-permissions/ios/Camera/Permission-Camera.podspec`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
@@ -464,19 +380,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
-    - CocoaAsyncSocket
-    - Flipper
-    - Flipper-Boost-iOSX
-    - Flipper-DoubleConversion
-    - Flipper-Fmt
-    - Flipper-Folly
-    - Flipper-Glog
-    - Flipper-PeerTalk
-    - Flipper-RSocket
-    - FlipperKit
-    - libevent
-    - OpenSSL-Universal
-    - YogaKit
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -566,23 +469,11 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   FBLazyVector: 7b423f9e248eae65987838148c36eec1dbfe0b53
-  FBReactNativeSpec: 86ae93bcb24477784b6ac07e2e1565270bbff8da
-  Flipper: 1dae30a6929a29e74fa2a0dfde524fea5841f081
-  Flipper-Boost-iOSX: fd1e2b8cbef7e662a122412d7ac5f5bea715403c
-  Flipper-DoubleConversion: 38631e41ef4f9b12861c67d17cb5518d06badc41
-  Flipper-Fmt: 60cbdd92fc254826e61d669a5d87ef7015396a9b
-  Flipper-Folly: 4c7cf530a9038ae25b0fa37e00b00491c467aaea
-  Flipper-Glog: 1dfd6abf1e922806c52ceb8701a3599a79a200a6
-  Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
-  Flipper-RSocket: d9d9ade67cbecf6ac10730304bf5607266dd2541
-  FlipperKit: eba86e7b40917336b4af05561c2cb46e39a63802
+  FBReactNativeSpec: e9a3b6c5b7c08bf5b19964e31d1c8532bd840160
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
-  libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
-  OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
-  Permission-Camera: ac603073e4128e51e6ca3c39129778f05b4082fa
+  Permission-Camera: 0db4fd6e1c556c1cf47f38b989a8084cea3ec3dd
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTRequired: ec2ebc96b7bfba3ca5c32740f5a0c6a014a274d2
   RCTTypeSafety: 22567f31e67c3e088c7ac23ea46ab6d4779c0ea5
@@ -594,10 +485,10 @@ SPEC CHECKSUMS:
   React-jsi: 5de8204706bd872b78ea646aee5d2561ca1214b6
   React-jsiexecutor: 124e8f99992490d0d13e0649d950d3e1aae06fe9
   React-jsinspector: 500a59626037be5b3b3d89c5151bc3baa9abf1a9
-  react-native-camera: a6055b8538d741b5ac221fa73c866c526010c8c9
-  react-native-cameraroll: 88f4e62d9ecd0e1f253abe4f685474f2ea14bfa2
+  react-native-camera: 3eae183c1d111103963f3dd913b65d01aef8110f
+  react-native-cameraroll: 2957f2bce63ae896a848fbe0d5352c1bd4d20866
   react-native-safe-area: e8230b0017d76c00de6b01e2412dcf86b127c6a3
-  react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
+  react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-slider: e99fc201cefe81270fc9d81714a7a0f5e566b168
   react-native-view-shot: 4475fde003fe8a210053d1f98fb9e06c1d834e1c
   React-perflogger: aad6d4b4a267936b3667260d1f649b6f6069a675
@@ -614,14 +505,13 @@ SPEC CHECKSUMS:
   ReactCommon: bedc99ed4dae329c4fcf128d0c31b9115e5365ca
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNPermissions: 7043bacbf928eae25808275cfe73799b8f618911
-  RNReanimated: 9c13c86454bfd54dab7505c1a054470bfecd2563
-  RNScreens: 01ab149b5dd5c27f5ff26741b1d2bdf2cee1af35
-  RNShare: 00e7409201e3cab13e0febc41fd4465a83ae8225
+  RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
+  RNReanimated: 024eff8202342abf4b24e11575a16afc441dabfe
+  RNScreens: 4d79118be80f79fa1f4aa131909a1d6e86280af3
+  RNShare: 3013bd25beed9c5ea93961c0783a44c30ac72e9b
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: a7de31c64fe738607e7a3803e3f591a4b1df7393
-  YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 227015c931ac0e2197d218adbaec3b7158dc96ba
+PODFILE CHECKSUM: 6106da7217bfbdfbb7fcd2bbc5db9cb2670a73bd
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.2
